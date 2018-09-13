@@ -12,17 +12,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
 
-      path:'/allclassify',
-      component:AllClassify,
-      children:[
-        {
-          path:'/classifylist',
-          component:ClassifyList
-        }
-      ]
-    },
     {
       path:"/",
       name:"Tou1",
@@ -31,7 +21,20 @@ export default new Router({
     {
       path:"/tou2",
       name:"Tou2",
-      component: Tou2
+      component: Tou2,
+      children:[
+        {
+
+          path:'/allclassify',
+          component:AllClassify,
+          children:[
+            {
+              path:'/classifylist',
+              component:ClassifyList
+            }
+          ]
+        },
+      ]
     },
     {
       path:"/end",
