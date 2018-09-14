@@ -1,13 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Wrong from  '@/components/Wrong'
+import AllClassify from  '@/components/AllClassify'
+import ClassifyList from '@/components/ClassifyList'
 import Tou1 from '@/components/Tou1'
 import Tou2 from '@/components/Tou2'
 import End from '@/components/End'
+
 import Pay from '@/components/Pay'
+
+
+
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
+
     {
       path:"/",
       name:"Tou1",
@@ -16,7 +25,20 @@ export default new Router({
     {
       path:"/tou2",
       name:"Tou2",
-      component: Tou2
+      component: Tou2,
+      children:[
+        {
+
+          path:'/allclassify',
+          component:AllClassify,
+          children:[
+            {
+              path:'/classifylist',
+              component:ClassifyList
+            }
+          ]
+        },
+      ]
     },
     {
       path:"/end",
@@ -24,9 +46,14 @@ export default new Router({
       component: End
     },
     {
+
       path:"/pay",
       name:"Pay",
-      component: Pay
+      component: Pay,},
+    {
+      path: '*',
+      component: Wrong,
+
     },
   ]
 })
