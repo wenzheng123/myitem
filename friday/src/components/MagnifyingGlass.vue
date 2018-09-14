@@ -1,10 +1,12 @@
 <template>
-    
+<div class="glass">
+
+</div>
 </template>
 
 <script>
     export default {
-        name: "1"
+        name: "MagnifyingGlass"
     }
 </script>
 

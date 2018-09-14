@@ -19,11 +19,12 @@
            购物车
          </p>
        </div>
-       <ul class="top4" v-for="item in arr2">
+       <ul class="top4">
 
-         <li>{{item.z1}}<span>{{item.z2}}</span>  </li>
-
+         <li v-for="item in arr2"><router-link :to="item.z2">{{item.z1}}</router-link> </li>
+         <img src="" alt="">
        </ul>
+       <router-view class="allClassify"></router-view>
      </div>
    </div>
 </template>
@@ -34,12 +35,12 @@
       data(){
           return{
             arr2:[
-              {z1:"全部分类",z2:"|"},
-              {z1:"首页",z2:"|"},
-              {z1:"同城",z2:"|"},
-              {z1:"礼拜五",z2:"|"},
-              {z1:"积分商城",z2:"|"},
-              {z1:"导航+"},
+              {z1:"全部分类",z2:"/allclassify"},
+              {z1:"首页",z2:"###"},
+              {z1:"同城",z2:"###"},
+              {z1:"礼拜五",z2:"###"},
+              {z1:"积分商城",z2:"###"},
+              {z1:"导航+",z2:"###"},
             ]
           }
       }
@@ -47,17 +48,28 @@
 </script>
 
 <style scoped>
-  .top4{
-    margin: 40px ;
+  .top4 .allClassify{
+    position: absolute;
+    left: 0;
+    top: 50px;
   }
-  .top4 li span{
-    margin-left:60px;
-    color: #e8e8e8;
+  .top4{
+    width: 1020px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+    overflow: hidden;
   }
   .top4 li{
-    float: left;
-    margin-right: 60px;
+    flex: 1;
     font-size: 20px;
+    text-align: center;
+    border-right: 1px #e8e8e8 solid;
+    position: relative;
+    left: 1px;
+  }
+  .top4 li a{
     color: #696969;
   }
   .top3{
@@ -89,14 +101,26 @@
     left: 474px;
     top: 50px;
   }
+  .top2_1{
+    position: relative;
+  }
   input{
     font-size: 17px;
-    margin: 2px;
-    width: 455px;
-    height: 32px;
+    width: 435px;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2px;
+    margin: auto;
+    padding: 0 10px;
   }
   .top2_1 img{
-    margin-bottom: -3px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto;
   }
   .top2_1{
     width: 498px;
@@ -113,6 +137,6 @@
     position: relative;
   }
 .box {
-  border-bottom: solid #ccc;
+  border-bottom: solid #e8e8e8 1px;
 }
 </style>
