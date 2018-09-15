@@ -1,89 +1,81 @@
 <template>
-    <div class="box">
-<Tou1></Tou1>
-      <div class="content">
-        <div class="one0">
+  <div class="box">
+    <Tou1></Tou1>
+    <div class="content">
+      <div class="one0">
         <div class="one">
           <img src="../../static/img/end1.png" alt="">
-          <p>我的购物车 <span> > </span> 确认订单 <span> > </span> <strong>订单提交成功</strong> </p>
+         <p>充值成功</p>
         </div>
+      </div>
+      <!--第二个-->
+      <div class="one1">
+        <div class="one4">
+          <p>应付金额：<B>165.90</B>   （在线支付） <br> <span>支付平台</span> </p>
+          <p>订单编号：425954156947</p>
         </div>
-        <!--第二个-->
-        <div class="one1">
-        <div class="one2">
-          <img src="static/img/对号.png" alt="">
-          <p>订单已提交，请于24小时内完成支付 <span class="tz">（逾期订单将被取消）</span></p>
-        </div>
-          <div class="one3">
-            <span><img src="static/img/location.png" alt=""></span>
-         送货至： 但小兵 北京 北京市 昌平区 天通苑明天第一城4号楼101 固定电话010-21541589
-          </div>
-          <div class="one4">
-            <p>应付金额：<B>165.90</B>   （在线支付） <br> <span>支付平台</span> </p>
-            <p>订单编号：425954156947</p>
-          </div>
-          <div class="one5">
-            <div class="one5_1" v-for="(item,index) in arr">
+        <div class="one5">
+          <div class="one5_1" v-for="(item,index) in arr">
             <img src="static/img/an.png" alt="" class="m1" @click="white(index)">
             <img :src="item.m2" alt="" class="m2">
-            </div>
           </div>
-          <div class="one6">
-            <div class="one6_1">
-              <p>使用电脑支付</p>
-              <img src="static/img/CCTV.png" alt="">
-              <p>立即支付</p>
-            </div>
-            或
-            <div class="one6_2">
-              <p>使用支付宝钱包扫一扫付款</p>
-              <img src="static/img/code1.png" alt="">
-            </div>
+        </div>
+        <div class="one6">
+          <div class="one6_1">
+            <p>使用电脑支付</p>
+            <img src="static/img/CCTV.png" alt="">
+            <p>立即支付</p>
           </div>
+          或
+          <div class="one6_2">
+            <p>使用支付宝钱包扫一扫付款</p>
+            <img src="static/img/code1.png" alt="">
+          </div>
+        </div>
 
         <div class="one7">
           <img src="static/img/iphone.png" alt="">
-         <div class="one7_1">
-          <p>使用微信扫一扫付款</p>
-          <img src="static/img/code2.png" alt="">
-        </div>
-        </div>
+          <div class="one7_1">
+            <p>使用微信扫一扫付款</p>
+            <img src="static/img/code2.png" alt="">
+          </div>
         </div>
       </div>
-      <End></End>
     </div>
+    <End></End>
+  </div>
 </template>
 
 <script>
   import Tou1 from "@/components/Tou1";
   import End from "@/components/End";
-    export default {
-        name: "Pay",
-      components:{
-          Tou1,
-        End
-      },
-      data(){
-          return{
-            arr:[
-              {m2:"static/img/支付宝.jpg"},
-              {m2:"static/img/微信.png"},
-              {m2:"static/img/银联.png"},
-              {m2:"static/img/余额.png"},
-            ],
-            index:1
-          }
-      },
+  export default {
+    name: "Pay1",
+    components:{
+      Tou1,
+      End
+    },
+    data(){
+      return{
+        arr:[
+          {m2:"static/img/支付宝.jpg"},
+          {m2:"static/img/微信.png"},
+          {m2:"static/img/银联.png"},
+          {m2:"static/img/余额.png"},
+        ],
+        index:1
+      }
+    },
 
-      methods:{
-          white(index){
-              $(".m1").eq(index).attr("src","static/img/white.png")
+    methods:{
+      white(index){
+        $(".m1").eq(index).attr("src","static/img/white.png")
 
-              $(".m1").not($(".m1").eq(index)).attr("src","static/img/an.png")
+        $(".m1").not($(".m1").eq(index)).attr("src","static/img/an.png")
 
-          }
       }
     }
+  }
 </script>
 
 <style scoped>
@@ -119,7 +111,7 @@
     width: 170px;
     height: 45px;
     background: #f08200;
-   line-height: 45px;
+    line-height: 45px;
     color: #ffffff;
     border-radius: 10px;
   }
@@ -163,11 +155,11 @@
   }
   .one4 p:nth-child(2){
     position: absolute;
-    right: 217px;
+    right: 0;
     top: 0;
   }
   .one4 p:nth-child(1) span{
-   line-height: 100px;
+    line-height: 100px;
   }
   .one4{
     margin-top: 40px;
@@ -184,24 +176,11 @@
     width: 38px;
     height: 38px;
   }
-  .one3{
-    color: #727472;
-    font-size: 14px;
-    height: 36px;
-    background: #f4fff2;
-    border:2px solid #ccc;
-  }
-  .tz{
-    color: #f08200;
-  }
+
   .one2 img{
     margin: 80px 0 60px 0;
   }
-  .one2{
-    text-align: center;
-    height: 323px;
-    font-size: 24px;
-  }
+
   .one1{
     margin: 0 auto;
     width: 1280px;
@@ -215,9 +194,14 @@
     margin: 0 40px;
   }
   .one p{
+    width: 160px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-left: 1px solid #ccc;
     font-weight: 200;
     position: absolute;
-    right: 0;
+   left: 430px;
     top: 60px;
     font-size: 20px;
   }

@@ -21,11 +21,14 @@
        </div>
        <ul class="top4">
 
-         <li v-for="item in arr2"><router-link :to="item.z2">{{item.z1}}</router-link> </li>
+         <li class="bol" v-for="item in arr2" @click="item.z3"><router-link :to="item.z2" >{{item.z1}}</router-link> </li>
          <img src="" alt="">
        </ul>
        <router-view class="allClassify"></router-view>
+
+
      </div>
+
    </div>
 </template>
 
@@ -34,20 +37,42 @@
         name: "Tou2",
       data(){
           return{
+
             arr2:[
-              {z1:"全部分类",z2:"/allclassify"},
-              {z1:"首页",z2:"###"},
-              {z1:"同城",z2:"###"},
-              {z1:"礼拜五",z2:"###"},
-              {z1:"积分商城",z2:"###"},
-              {z1:"导航+",z2:"###"},
-            ]
+              {z1:"全部分类",z2:"/allclassify",z3:this.bol},
+              {z1:"首页",z2:"###",z3:this.bol1},
+              {z1:"同城",z2:"###",z3:this.bol1},
+              {z1:"礼拜五",z2:"###",z3:this.bol1},
+              {z1:"积分商城",z2:"###",z3:this.bol1},
+              {z1:"导航+",z2:"###",z3:this.bol1},
+            ],
+            index:0
           }
+      },
+      mounted(){
+        $(".allClassify").css("display","none")
+      },
+      methods:{
+          bol(){
+            this.index++
+            if(this.index % 2 ==0){
+              $(".allClassify").css("display","none")
+            }else{
+              $(".allClassify").css("display","block")
+            }
+
+            console.log(111)
+          },
+          bol1(){
+          }
+
       }
     }
 </script>
 
 <style scoped>
+
+  /*中间*/
   .top4 .allClassify{
     position: absolute;
     left: 0;
