@@ -6,17 +6,28 @@ import ClassifyList from '@/components/ClassifyList'
 import Tou1 from '@/components/Tou1'
 import Tou2 from '@/components/Tou2'
 import End from '@/components/End'
+import Jifen from '@/components/Jifen'
+import shouye from '@/components/shouye'
 
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-
     {
       path:"/",
       name:"Tou1",
       component: Tou1
+    },
+    {
+      path:"/shouye",
+      name:"shouye",
+      component: shouye
+    },
+    {
+      path:"/Jifen",
+      name:"Jifen",
+      component: Jifen
     },
     {
       path:"/tou2",
@@ -24,15 +35,8 @@ export default new Router({
       component: Tou2,
       children:[
         {
-
           path:'/allclassify',
           component:AllClassify,
-          children:[
-            {
-              path:'/classifylist',
-              component:ClassifyList
-            }
-          ]
         },
       ]
     },
@@ -42,7 +46,7 @@ export default new Router({
       component: End
     },
     {
-      path: '*',
+      path: '/',
       component: Wrong,
     },
   ]
