@@ -9,7 +9,13 @@ import End from '@/components/End'
 import Jifen from '@/components/Jifen'
 import shouye from '@/components/shouye'
 
-
+import Pay from '@/components/Pay'
+import Pay1 from '@/components/Pay1'
+import Shopping from '@/components/Shopping'
+import Lian from '@/components/Lian'
+import Lian1 from '@/components/Lian1'
+import Enter from '@/components/Enter'
+import New from '@/components/New'
 Vue.use(Router)
 
 export default new Router({
@@ -27,7 +33,27 @@ export default new Router({
     {
       path:"/Jifen",
       name:"Jifen",
-      component: Jifen
+      component: Jifen,
+    },
+    {
+      path:"/lian",
+      name:"Lian",
+      component:Lian
+    },
+    {
+      path:"/lian1",
+      name:"Lian1",
+      component:Lian1
+    },
+    {
+      path:"/enter",
+      name:"Enter",
+      component:Enter
+    },
+    {
+      path:"/new",
+      name:"New",
+      component:New
     },
     {
       path:"/tou2",
@@ -46,8 +72,19 @@ export default new Router({
       component: End
     },
     {
-      path: '/',
-      component: Wrong,
+      path:"/pay",
+      name:"Pay",
+      component: Pay
+    },
+    {
+      path:"/pay1",
+      name:"Pay1",
+      component: Pay1
+    },
+    {
+      path:"/shopping",
+      name:"Shopping",
+      component: Shopping
     },
   ]
 })
