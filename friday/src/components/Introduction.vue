@@ -14,5 +14,8 @@
 </script>
 
 <style scoped>
+.introduction{
+  width: 1280px;
+}
 
 </style>
