@@ -2,8 +2,9 @@
   <div class="box">
     <Tou1></Tou1>
     <Tou2></Tou2>
-
+    <div class="top" id="end"></div>
     <div class="content">
+
       <div class="one">
         <div class="one_1" v-for="item in arr">
           <p>{{item.z1}} <span>{{item.z2}}</span> </p>
@@ -19,7 +20,7 @@
         <div class="one2_2">
           <p class="tz4">筛选:</p>
           <p class="tz5">全国</p>
-          <p class="tz6" id="end">次日达</p>
+          <p class="tz6" >次日达</p>
         </div>
       </div>
       <div class="one3" v-for="i in 2">
@@ -32,7 +33,7 @@
         </div>
 
       </div>
-      <p class="aa" >点击</p>
+
     </div>
   </div>
 </template>
@@ -72,7 +73,7 @@
         addProduct(event){
           var offset = $('#end').offset();
           var flyer = $('<img class="u-flyer" src="../../static/img/bus.png"/>');
-          // $('body').prepend(flyer);
+
           var top = $(window).scrollTop();
 
           console.log(event.pageX, event.pageY, $(window).scrollTop());
@@ -91,7 +92,7 @@
             }
           });
           $('.u-flyer').delay(800).animate(
-            {opacity: 0}, 0
+            {opacity: 0},10
           );
           console.log(111)
         }
@@ -106,13 +107,21 @@
 </script>
 
 <style scoped>
+ .top{
+   width: 127px;
+   height: 40px;
+   position: absolute;
+   top: 88px;
+   right: 353px;
 
+ }
   .one3_1 {
     margin-right: 10px;
     margin-top: 20px;
   }
   .one3_1 img:nth-of-type(2){
-    margin: -40px 0px 0 250px;
+    float: right;
+    margin: -25px 20px 0 250px;
 
   }
   .p2{
@@ -135,7 +144,7 @@
   .one3_1 p{
     margin-left: 19px;
   }
- .one3_1 img:nth-child(1){
+ .one3_1 img:nth-of-type(1){
    height: 297px;
    width: 100%;
  }

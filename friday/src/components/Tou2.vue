@@ -11,11 +11,11 @@
        </div>
        <div class="top3">
          <p>
-           <img src="static/img/tou1.png" alt="">
+           <img src="../../static/img/tou1.png" alt="">
            个人中心
          </p>
          <p>
-           <img src="static/img/购物车.png" alt="">
+           <img src="../../static/img/购物车.png" alt="">
            购物车
          </p>
        </div>
@@ -105,9 +105,9 @@
   }
   .top3 p img{
     margin-top: 10px;
+    margin-right:15px;
   }
   .top3 p{
-
     border:2px solid #e5e5e5;
     margin-left: 20px;
     float: left;
