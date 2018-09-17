@@ -6,13 +6,17 @@ import ClassifyList from '@/components/ClassifyList'
 import Tou1 from '@/components/Tou1'
 import Tou2 from '@/components/Tou2'
 import End from '@/components/End'
-
+import Introduction from '@/components/Introduction'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-
+    {
+      path:"/",
+      name:"go",
+      component: Introduction
+    },
     {
       path:"/",
       name:"Tou1",
