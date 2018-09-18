@@ -72,28 +72,27 @@
           // 如果需要分页器
           pagination: {
             el: '.lbl1',
-            clickable: true,
+            // clickable: true,
+            // bulletClass : 'my-bullet',
+            // bulletActiveClass: 'my-bullet-active',
             renderBullet: function (index, className) {
               return '<span style="width: 8px;height: 8px;background-color:#666666" class="' + className + '"></span>';
             },
             // type: 'bullets',
             // clickable: true,
-            // bulletClass : 'my-bullet',
-            // bulletActiveClass: 'my-bullet-active',
           },
         })
       }
     }
 </script>
 
-<style scoped>
-  .my-bullet{
+<style scoped >
+  .lbl1 .swiper-pagination {
     width: 8px;
     height: 8px;
-    background-color: #ffffff;
-    opacity: 0.8;
+    background-color: red;
   }
-  .my-bullet-active{
+  .swiper-pagination .swiper-pagination .swiper-pagination-active{
     width: 10px;
     height: 10px;
     background-color: #4b943d;

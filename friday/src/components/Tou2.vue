@@ -10,17 +10,16 @@
          <p>热门：   奇异果       牛排       山竹       牛油果</p>
        </div>
        <div class="top3">
-         <p>
+         <div>
            <img src="../../static/img/tou1.png" alt="">
            个人中心
-         </p>
-         <p>
-           <img src="../../static/img/购物车.png" alt="">
-           购物车
-         </p>
+         </div>
+         <div :id="inputName" @click="goshop">
+           <img  src="../../static/img/购物车.png" alt="">
+           购物车<span class="show"></span>
+         </div>
        </div>
        <ul class="top4">
-
          <li class="bol" v-for="item in arr2" @click="item.z3"><router-link :to="item.z2" >{{item.z1}}</router-link> </li>
          <img src="" alt="">
        </ul>
@@ -35,6 +34,11 @@
 <script>
     export default {
         name: "Tou2",
+      props:{
+        inputName: String,
+        inputNum: Number,
+        required: true,
+      },
       data(){
           return{
             arr2:[
@@ -48,12 +52,25 @@
             index:0
           }
       },
+      watch:{
+        inputNum(newVal,oldVal){
+          console.log(newVal,oldVal)
+          $('.show').html('(' + newVal + ')')
+          $('.show').css('color','red')
+          if(newVal>=100){
+            $('#end img').css('margin',0)
+          }
+        }
+      },
       mounted(){
         $(".allClassify").css("display","none")
       },
       methods:{
+          goshop(){
+            this.$router.push({path:'/cart'})
+          },
           bol(){
-            this.index++;
+            this.index++
             if(this.index % 2 ==0){
               $(".allClassify").css("display","none")
             }else{
@@ -70,7 +87,9 @@
 </script>
 
 <style scoped>
-
+.show{
+  float: right;
+}
   /*中间*/
   .top4 .allClassify{
     position: absolute;
@@ -103,20 +122,21 @@
     right: 0;
     top: 50px;
   }
-  .top3 p img{
-    margin-top: 10px;
-    margin-right:15px;
-  }
-  .top3 p{
+
+  .top3 div{
     border:2px solid #e5e5e5;
-    margin-left: 20px;
+    margin-left: 15px;
     float: left;
     width: 127px;
     height: 40px;
+    line-height: 40px;
     background: #f8f8f6;
     color: #666666;
-    text-align: center;
   }
+.top3 div img{
+  vertical-align: middle;
+  margin: 0 8px;
+}
   .top2 p{
     margin-top: 2px;
     color: #666666;

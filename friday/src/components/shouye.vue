@@ -1,7 +1,7 @@
 <template>
     <div class="con">
       <Tou1></Tou1>
-      <Tou2></Tou2>
+      <Tou2 :inputName="aa" :inputNum="num1"></Tou2>
       <Jflb :slName="name"></Jflb>
       <ul class="conNav">
         <li class="conNav1" v-for="item in data">
@@ -31,17 +31,101 @@
         </li>
       </ul>
       <Shouyelb></Shouyelb>
+      <ul class="conNav3">
+        <li>
+          <img class="img" src="../../static/img/shouye/zhong.png" alt="">
+          <span class="navSpan1">新鲜水果</span>
+          <span class="navSpan2">采集新疆优质水果生产基地,品质一流</span>
+        </li>
+        <li>更多></li>
+      </ul>
+      <ul class="con3">
+        <li v-for="sg in shuiguo">
+          <img class="navImg" :src="sg.src" alt="">
+          <p class="conP">{{sg.name}}</p>
+          <p class="conP1">{{sg.intro}}</p>
+          <div class="conD">
+            <span>¥{{sg.zhekou}}</span>
+            <span>¥{{sg.price}}</span>
+            <img @click="add();addProduct()" src="../../static/img/bus.png" alt="">
+          </div>
+        </li>
+      </ul>
+      <ul class="conNav3">
+        <li>
+          <img class="img" src="../../static/img/shouye/zhong.png" alt="">
+          <span class="navSpan1">水产海鲜</span>
+          <span class="navSpan2">国内外新鲜到港的鱼虾蟹贝，我们全都有</span>
+        </li>
+        <li>更多></li>
+      </ul>
+      <ul class="con3">
+        <li v-for="sc in shuichan">
+          <img class="navImg" :src="sc.src" alt="">
+          <p class="conP">{{sc.name}}</p>
+          <p class="conP1">{{sc.intro}}</p>
+          <div class="conD">
+            <span>¥{{sc.zhekou}}</span>
+            <span>¥{{sc.price}}</span>
+            <img @click="add();addProduct()" src="../../static/img/bus.png" alt="">
+          </div>
+        </li>
+      </ul>
+      <ul class="conNav3">
+        <li>
+          <img class="img" src="../../static/img/shouye/zhong.png" alt="">
+          <span class="navSpan1">肉类禽蛋</span>
+          <span class="navSpan2">采集新疆优质水果生产基地,品质一流</span>
+        </li>
+        <li>更多></li>
+      </ul>
+      <ul class="con3">
+        <li v-for="sg in shuiguo">
+          <img class="navImg" :src="sg.src" alt="">
+          <p class="conP">{{sg.name}}</p>
+          <p class="conP1">{{sg.intro}}</p>
+          <div class="conD">
+            <span>¥{{sg.zhekou}}</span>
+            <span>¥{{sg.price}}</span>
+            <img @click="add();addProduct()" src="../../static/img/bus.png" alt="">
+          </div>
+        </li>
+      </ul>
+      <ul class="conNav3">
+        <li>
+          <img class="img" src="../../static/img/shouye/zhong.png" alt="">
+          <span class="navSpan1">蛋奶速食</span>
+          <span class="navSpan2">国内外新鲜到港的鱼虾蟹贝，我们全都有</span>
+        </li>
+        <li>更多></li>
+      </ul>
+      <ul class="con3" >
+        <li v-for="sc in shuichan">
+          <img class="navImg" :src="sc.src" alt="">
+          <p class="conP">{{sc.name}}</p>
+          <p class="conP1">{{sc.intro}}</p>
+          <div class="conD">
+            <span>¥{{sc.zhekou}}</span>
+            <span>¥{{sc.price}}</span>
+            <img @click="add();addProduct()"  src="../../static/img/bus.png" alt="">
+          </div>
+        </li>
+      </ul>
+      <end></end>
     </div>
 </template>
 
 <script>
+    import {realconsole} from "../../static/jquery.fly.min"
     import Jflb from "./Jflb";
     import Tou1 from "./Tou1";
     import Tou2 from "./Tou2";
     import Shouyelb from "./Shouyelb";
+    import End from "./End";
     export default {
         name: "shouye",
       components:{
+        End,
         Shouyelb,
         Tou2,
         Tou1,
@@ -49,6 +133,8 @@
       },
       data(){
           return {
+            num1:0,
+            aa:'end',
             data:[
               {url:'../../static/img/shouye/yangrou.png',p1:'内蒙古草原',p2:'羔羊羊精肉'},
               {url:'../../static/img/shouye/ningmeng.png',p1:'新西兰柠檬',p2:'鲜橙靓皮 柠香清新'},
@@ -61,14 +147,63 @@
               {name:'../../static/img/shouye/sylb.png',p1:'',p2:''},
               {name:'../../static/img/shouye/sylb.png',p1:'',p2:''},
               {name:'../../static/img/shouye/sylb.png',p1:'',p2:''},
-            ]
+            ],
+            shuiguo:[],
+            shuichan:[],
           }
+      },
+      methods:{
+          add(){
+            this.num1++;
+            console.log(this.num1)
+          },
+        addProduct(){
+          var offset = $('#end').offset();
+          var flyer = $('<img class="u-flyer" src="../../static/img/bus.png"/>');
+
+          var top = $(window).scrollTop();
+
+          console.log(event.pageX, event.pageY, $(window).scrollTop());
+
+          flyer.fly({
+            start: {
+              left: event.pageX,
+              top: event.pageY - top
+            },
+            end: {
+              left: offset.left,
+              top: offset.top,
+              width: 15,
+              height: 15,
+              opacity: 0,
+              zIndex:999,
+            }
+          });
+          $('.u-flyer').delay(800).animate(
+            {opacity: 0},10
+          );
+
+        }
+      },
+      created(){
+        this.axios.get("/api/PHP/123/shouye.php",{params:{type:0}}).then(res=>{
+          //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
+          this.shuiguo=res.data;//获取数据
+          console.log(this.shuiguo)
+        })
+        this.axios.get("/api/PHP/123/shouye.php",{params:{type:1}}).then(res=>{
+          //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
+          this.shuichan=res.data;//获取数据
+          console.log(this.shuichan)
+        })
       },
       mounted(){
           $('.conNav1:first').css( 'margin-left',0)
-      $('.jl:odd').css('background-position','0 -50px')
+          $('.jl:odd').css('background-position','0 -50px')
+        $('.con3:last').css('margin-bottom','40px')
       }
     }
+
 </script>
 
 <style scoped>
@@ -114,14 +249,14 @@
     margin: auto 0;
   }
   .conNav2{
-    width: 1220px;
+    width: 1280px;
     height: 100px;
     padding: 0 30px;
     text-align: center;
     line-height: 100px;
     margin: 20px auto 0;
     border-bottom: 1px solid rgb(73, 142, 61);
-  background-color: #ebffe8;
+    background-color: #ebffe8;
   }
   .img{
     vertical-align: middle;
@@ -152,5 +287,88 @@
     margin-left: 20px;
     color: rgb(102, 102, 102);
   }
+  .conNav3{
+    width: 1280px;
+    height: 100px;
+    padding: 0 30px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 100px;
+    margin: 20px auto 0;
+    border-bottom: 1px solid rgb(73, 142, 61);
+    background-color: #ebffe8;
+  }
+  .conNav3>li:nth-of-type(1){
+    float: left;
+  }
+  .navSpan1{
+    margin-left: 20px;
+    font-size: 32px;
+    color: #7fb476;
+  }
+  .navSpan2{
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: 200;
+    color: #999999;
+  }
+  .conNav3>li:nth-of-type(2){
+    float: right;
+  }
+  .con3{
+    width: 1280px;
+    height: 100%;
+    overflow: hidden;
+    margin: 20px auto 0;
+  }
 
+  .con3 li{
+    width: 305px;
+    height: 432px;
+    padding: 0 20px;
+    margin-left: 20px;
+    text-align: center;
+    float: left;
+    border: 1px solid #ececec;
+}
+  .con3 li:nth-of-type(1){
+    margin-left: 0;
+  }
+
+  .navImg{
+    width: 208px;
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  .con3 p{
+    text-align: left;
+  }
+  .conP{
+    font-size: 18px;
+    color: rgb(51, 51, 51);
+    line-height: 1.667;
+  }
+  .conP1{
+    font-size: 14px;
+    color: #a3a3a3;
+  }
+.conD{
+  font-size: 24px;
+  line-height: 1.25;
+  text-align: left;
+
+}
+  .conD>span:nth-of-type(1){
+    color: rgb(255, 87, 87);
+  }
+  .conD>span:nth-of-type(2){
+    margin-left: 15px;
+    text-decoration: line-through;
+    font-size: 14px;
+    color: #a3a3a3;
+  }
+  .conD img{
+    float: right;
+  }
 </style>
