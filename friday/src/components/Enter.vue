@@ -133,6 +133,7 @@
             $(".demo2").css("opacity",1)
             }else if(newme.length > 11){
               $(".me1").css("display","block")
+
               $(".demo2").css("opacity",0)
             } else{
 
