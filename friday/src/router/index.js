@@ -7,6 +7,10 @@ import Tou1 from '@/components/Tou1'
 import Tou2 from '@/components/Tou2'
 import End from '@/components/End'
 
+import Introduction from '@/components/Introduction'
+
+
+
 import Pay from '@/components/Pay'
 import Pay1 from '@/components/Pay1'
 import Shopping from '@/components/Shopping'
@@ -14,15 +18,23 @@ import Lian from '@/components/Lian'
 import Lian1 from '@/components/Lian1'
 import Enter from '@/components/Enter'
 import New from '@/components/New'
+
 import New1 from '@/components/New1'
 import New2 from '@/components/New2'
 import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
+
+
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
-
+    {
+      path:"/",
+      name:"go",
+      component: Introduction
+    },
     {
       path:"/",
       name:"Tou1",
