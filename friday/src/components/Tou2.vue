@@ -18,6 +18,11 @@
            <img  src="../../static/img/购物车.png" alt="">
            购物车<span class="show"></span>
          </div>
+         <p>
+           <img :id="end" src="../../static/img/购物车.png" alt="">
+           购物车
+         </p>
+
        </div>
        <ul class="top4">
          <li class="bol" v-for="item in arr2" @click="item.z3"><router-link :to="item.z2" >{{item.z1}}</router-link> </li>
@@ -49,7 +54,8 @@
               {z1:"积分商城",z2:"/Jifen",z3:this.bol1},
               {z1:"导航+",z2:"###",z3:this.bol1},
             ],
-            index:0
+            index:0,
+
           }
       },
       watch:{
@@ -63,6 +69,7 @@
         }
       },
       mounted(){
+
         $(".allClassify").css("display","none")
       },
       methods:{
@@ -82,13 +89,22 @@
           bol1(){
           }
 
+      },
+      props:{
+        end:String,
+        required:true
       }
     }
 </script>
 
 <style scoped>
-.show{
+
+.show {
   float: right;
+}
+.input1 {
+  display: none;
+
 }
   /*中间*/
   .top4 .allClassify{
@@ -122,14 +138,17 @@
     right: 0;
     top: 50px;
   }
-
-  .top3 div{
+  .top3 p img{
+    margin-top: -3px;
+    margin-right:15px;
+  }
+  .top3 p{
+    line-height: 40px;
     border:2px solid #e5e5e5;
     margin-left: 15px;
     float: left;
     width: 127px;
     height: 40px;
-    line-height: 40px;
     background: #f8f8f6;
     color: #666666;
   }

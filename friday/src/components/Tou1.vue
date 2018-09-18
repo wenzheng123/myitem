@@ -40,7 +40,7 @@
 <style scoped>
   .right_2{
     float: right;
-    margin: -45px 0;
+    margin: -46px 0;
   }
   .right_1 p span{
 
