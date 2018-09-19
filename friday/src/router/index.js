@@ -17,6 +17,8 @@ import New from '@/components/New'
 import Intro1 from '@/components/Intro1'
 import Intro2 from '@/components/Intro2'
 import CountDown from '@/components/CountDown'
+import Host from '@/components/Host'
+import StoreClassify from '@/components/StoreClassify'
 import Test from '@/components/Test'
 Vue.use(Router)
 
@@ -25,7 +27,7 @@ export default new Router({
     {
       path:"/",
       name:"Tou1",
-      component: Test
+      component: StoreClassify
     },
     {
       path:"/intro",
