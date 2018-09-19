@@ -14,12 +14,23 @@ import Lian from '@/components/Lian'
 import Lian1 from '@/components/Lian1'
 import Enter from '@/components/Enter'
 import New from '@/components/New'
+<<<<<<< HEAD
+
+import New1 from '@/components/New1'
+import New2 from '@/components/New2'
+import Yan from '@/components/Yan'
+import Yan1 from '@/components/Yan1'
+
+
+
+=======
 import Intro1 from '@/components/Intro1'
 import Intro2 from '@/components/Intro2'
 import CountDown from '@/components/CountDown'
 import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
 import Test from '@/components/Test'
+>>>>>>> cc76777cfe4be4319145150e9b2fb74dfedeb4d7
 Vue.use(Router)
 
 export default new Router({
@@ -69,7 +80,29 @@ export default new Router({
     {
       path:"/new",
       name:"New",
-      component:New
+      component:New,
+
+    },
+    {
+      path:"/new1",
+      name:"New1",
+      component:New1,
+    },
+
+    {
+      path:"/new2",
+      name:"New2",
+      component:New2,
+    },
+    {
+      path:"/yan",
+      name:"Yan",
+      component:Yan
+    },
+    {
+      path:"/yan1",
+      name:"Yan1",
+      component:Yan1
     },
     {
       path:"/tou2",

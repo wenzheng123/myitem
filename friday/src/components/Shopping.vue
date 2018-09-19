@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <Tou1></Tou1>
-    <Tou2></Tou2>
+    <Tou2 :end="name"></Tou2>
     <div class="top" id="end"></div>
     <div class="content">
 
@@ -58,13 +58,13 @@
               {z1:"阿克苏"},
             ],
             arr1:[],
-
+            name:"end"
           }
       },
 
       methods:{
         gets(){
-          $.get("/api/PHP/two.php",function (data) {
+          $.get("/api/PHP/two.php",{type:1},function (data) {
             console.log(data)
             this.arr1 = data
           }.bind(this))
@@ -116,12 +116,13 @@
 
  }
   .one3_1 {
+    overflow: hidden;
     margin-right: 10px;
     margin-top: 20px;
   }
   .one3_1 img:nth-of-type(2){
     float: right;
-    margin: -25px 20px 0 250px;
+    margin: -37px 20px 0 250px;
 
   }
   .p2{

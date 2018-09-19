@@ -15,7 +15,8 @@
            个人中心
          </p>
          <p>
-           <img src="../../static/img/购物车.png" alt="">
+
+           <img :id="end" src="../../static/img/购物车.png" alt="">
            购物车
          </p>
        </div>
@@ -46,10 +47,12 @@
               {z1:"积分商城",z2:"###",z3:this.bol1},
               {z1:"导航+",z2:"###",z3:this.bol1},
             ],
-            index:0
+            index:0,
+
           }
       },
       mounted(){
+
         $(".allClassify").css("display","none")
       },
       methods:{
@@ -66,12 +69,18 @@
           bol1(){
           }
 
+      },
+      props:{
+        end:String,
+        required:true
       }
     }
 </script>
 
 <style scoped>
-
+.input1 {
+  display: none;
+}
   /*中间*/
   .top4 .allClassify{
     position: absolute;
@@ -104,10 +113,11 @@
     top: 50px;
   }
   .top3 p img{
-    margin-top: 10px;
+    margin-top: -3px;
     margin-right:15px;
   }
   .top3 p{
+    line-height: 40px;
     border:2px solid #e5e5e5;
     margin-left: 20px;
     float: left;
