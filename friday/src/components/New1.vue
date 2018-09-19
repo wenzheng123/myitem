@@ -8,14 +8,14 @@
       <span class="demo2"></span>
       <p class="me1"><span class="demo3"></span> 手机号码不正确，请重新输入</p>
       <input type="password" placeholder="密码" v-model="me3">
-      <input type="text" placeholder="验证码">
+      <input type="text" placeholder="验证码" v-model="me4">
       <div class="two4_1">
         <div class="two4">
           <Yan1></Yan1>
         </div>
       </div>
       <div class="two">
-        <input type="checkbox" style="width: 14px;height: 14px"  ><strong>自动登录</strong>
+        <input type="checkbox" style="width: 14px;height: 14px" class = "aa"><strong>自动登录</strong>
         <router-link to="/new"><p  @click="chong"> <u> 忘记密码?</u></p></router-link>
       </div>
     </div>
@@ -56,6 +56,7 @@ import axios from 'axios'
           me:"",
           me2:"",
           me3:"",
+          me4:'',
           index:1,
           arr:[]
         }
@@ -63,22 +64,36 @@ import axios from 'axios'
 
       mounted(){
 
+
       },
       methods:{
 
         enter(){
-          axios.get('/api/PHP/two.php',{params:{
-            type:3,
-            name:this.me,
-            password:this.me3,
-          }}).then((aa)=>{
-            console.log(aa.data,1);
-            if(aa.data == 0){
-              alert("注册成功")
-            }else{
-              alert("该账户已存在")
-            }
-          })
+          // 正则手机号判断
+          if(this.me && /^[1][3,4,5,7,8][0-9]{9}$/.test(this.me)){
+            // 数据库的调用
+            axios.get('/api/PHP/two.php',{params:{
+                type:4,
+                name:this.me,
+                password:this.me3,
+              }}).then((aa)=>{
+              console.log(aa.data);
+              if(aa.data == 0){
+                alert("账户未注册,请前往注册")
+              }if(aa.data[0].password == this.me3){
+                alert("登录成功")
+              }else{
+                alert("密码错误")
+              }
+            })
+
+          } else{
+            alert("手机号错误")
+            this.me = "";
+            this.me3 = "";
+            this.me4= ""
+          }
+
 
 
 

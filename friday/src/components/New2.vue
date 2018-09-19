@@ -7,7 +7,7 @@
         <span class="demo2"></span>
         <p class="me1"><span class="demo3"></span> 手机号码不正确，请重新输入</p>
         <input type="password" placeholder="请输入密码（6-20位号码字符）" v-model="me3">
-        <input type="password" placeholder="请再次输入密码确认" >
+        <input type="password" placeholder="请再次输入密码确认" v-model="me4">
         <input type="text" placeholder="验证码">
         <div class="two4_1">
           <div class="two4">
@@ -24,7 +24,7 @@
       </div>
       <div class="one2">
         <p @click="enter">注册</p>
-        <p>登录</p>
+        <p @click = "ent">登录</p>
       </div>
 
     </div>
@@ -45,25 +45,46 @@
         me:"",
         me2:"",
         me3:"",
+        me4:"",
         index:1
       }
     },
 
     methods:{
-      enter(){
-        axios.get('/api/PHP/two.php',{params:{
-            type:3,
-            name:this.me,
-            password:this.me3,
-          }}).then((response)=>{
-          console.log(response.data,1);
-          if(response.data == 0){
-            alert("注册成功")
-          }else{
-            alert("该账户已存在")
-          }
+      // 登录
+      ent(){
+        $(".one0").css({
+          display:'block',
+          zIndex:1
         })
+        $(".five").css("display","none")
       },
+
+      enter() {
+        if (this.me && /^[1][3,4,5,7,8][0-9]{9}$/.test(this.me)) {
+          axios.get('/api/PHP/two.php', {
+            params: {
+              type: 3,
+              name: this.me,
+              password: this.me3,
+            }
+          }).then((response) => {
+            console.log(response.data, 1);
+            if (response.data == 0) {
+              alert("注册成功")
+            } else {
+              alert("该账户已存在")
+            }
+          })
+        } else {
+          alert("手机号错误");
+          this.me = "";
+          this.me3 = "";
+          this.me4 = "";
+        }
+      },
+
+
 
       chong(){
         $(".five").css("display","none")
