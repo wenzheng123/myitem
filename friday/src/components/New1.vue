@@ -3,11 +3,11 @@
 <div class="content">
   <div class="one">
     <div class="one1">
-      <span>登录</span><span @click="new1">手机验证登录 <img src="../../static/img/new2.png" alt=""></span>
+      <span>登录</span><span>手机验证登录 <img src="../../static/img/new2.png" alt=""></span>
       <input type="text" placeholder="请输入手机号" v-model="me">
       <span class="demo2"></span>
       <p class="me1"><span class="demo3"></span> 手机号码不正确，请重新输入</p>
-      <input type="password" placeholder="密码">
+      <input type="password" placeholder="密码" v-model="me3">
       <input type="text" placeholder="验证码">
       <div class="two4_1">
         <div class="two4">
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="one2">
-      <p>登录</p>
+      <p @click="enter">登录</p>
       <p>会员注册</p><br>
       <span>提示：未注册用户将直接成为礼拜五用户</span>
     </div>
@@ -33,44 +33,61 @@
       </div>
     </div>
   </div>
-  <!--<New1 class="new2"></New1>-->
-  <!--<router-view/>-->
+
+
 </div>
   </div>
 </template>
 
 <script>
+
+import axios from 'axios'
   import Yan1 from "@/components/Yan1"
   import index from "../router";
-  // import  New2 from "@/components/New2"
+
     export default {
         name: "New1",
       components:{
           Yan1,
-        // New2
+
       },
       data(){
         return{
           me:"",
           me2:"",
-          index:1
+          me3:"",
+          index:1,
+          arr:[]
         }
       },
 
+      mounted(){
+
+      },
       methods:{
+
+        enter(){
+          axios.get('/api/PHP/two.php',{params:{
+            type:3,
+            name:this.me,
+            password:this.me3,
+          }}).then((aa)=>{
+            console.log(aa.data,1);
+            if(aa.data == 0){
+              alert("注册成功")
+            }else{
+              alert("该账户已存在")
+            }
+          })
+
+
+
+        },
+
         chong(){
           $(".one").css("display","none")
           $(".reset").css("display","block")
         },
-        new1(){
-          $(".box").css({
-           display:"none",
-           zIndex:1
-          })
-
-
-        },
-
         huoQu(){
           this.index++
           if(this.index % 2 == 0 ) {
@@ -230,7 +247,7 @@
   .demo5{ background-position:-79px 0;}
   .demo4{ background-position:-49px 0;}
 
-  .demo1,.demo2,.demo3{
+  .demo2,.demo3{
     margin-top: 10px;
     display:inline-block;
     width:16px;
@@ -238,7 +255,7 @@
     margin-left: 6px;
     background: transparent url("../../static/img/jl2.png") no-repeat;
   }
-  .demo1{ background-position:0 0;}
+
   .demo2{ background-position:-20px 0;
     position: absolute;
     top: 58px;

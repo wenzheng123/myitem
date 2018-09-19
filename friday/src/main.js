@@ -2,19 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+// import axios from 'axios'
 import router from './router'
 import $ from 'jquery'
 import * as filters from './assets/filters/filters'
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-<<<<<<< HEAD
-
-=======
+// Vue.prototype.$axios = axios
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key]);
-})
-/* eslint-disable no-new */
->>>>>>> cc76777cfe4be4319145150e9b2fb74dfedeb4d7
+});
+
 new Vue({
   el: '#app',
   router,

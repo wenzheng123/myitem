@@ -58,7 +58,7 @@
                   <Yan></Yan>
                 </div>
               </div>
-              <input class="input5" type="password" placeholder="请输入密码（6-20位号码字符）"> <input class="input5" type="password" placeholder="请再次输入密码">
+              <input class="input5" type="password" placeholder="请输入密码（6-20位号码字符）" v-model="me3"> <input class="input5" type="password" placeholder="请再次输入密码" v-model="me4">
 
 
 
@@ -68,22 +68,16 @@
               </div>
             </div>
             <div class="one8">
-              <p>提交</p>
+              <p @click="new2" >提交</p>
 
             </div>
-
-
           </div>
-
+        <New1 class="new1"></New1>
+        <New2 class="new2"></New2>
         </div>
-      <New1 class="new1"></New1>
 
       </div>
-    <New2 class="new2"></New2>
     </div>
-
-
-
 </template>
 
 <script>
@@ -106,16 +100,36 @@
         return{
           me:"",
           me2:"",
-          index:1
+          me3:"",
+          me4:"",
+          index:1,
+
         }
       },
+      mounted(){
 
+      },
       methods:{
-
-
-
+          gets(){
+            $.get("/api/PHP/two.php",
+              {type:2,
+                name:this.me,
+                password:this.me3,
+              },
+              function (data) {
+             console.log(data)
+            })
+          },
         new1(){
           $(".new1").css("display","block")
+          $(".one0").css("display","none")
+          console.log(111)
+        },
+        new2(){
+          $(".reset").css("display","none")
+          $(".new2").css("display","block")
+          console.log(2222)
+          this.gets()
         },
           chong(){
             $(".one0").css("display","none")
@@ -240,7 +254,7 @@
     line-height: 30px;
     position: absolute;
     right: 8px;
-    top: 28px;
+    top: 26px;
   }
   .two strong{
     position: absolute;
@@ -339,14 +353,13 @@
   }
   .new2{
     position: absolute;
-    right: 0px;
-    top: 100px;
-    z-index: 99;
-    border:solid red ;
+    left: 0px;
+    top: 0;
+    display: none;
   }
   .new1{
     position: absolute;
-    right: -717px;
+    right: 40px;
     top: 0;
     display: none;
   }
@@ -354,7 +367,7 @@
     width:397px;
     height: 500px;
     background: #ffffff;
-    overflow: hidden;
+    /*overflow: hidden;*/
     border: solid red;
     position: relative;
     border-top:2px  solid #ccc;
