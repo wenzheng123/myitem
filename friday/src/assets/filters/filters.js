@@ -10,5 +10,7 @@ let tel = num => {
   }
   return str;
 }
-
-export{tel}
+let toFixed = (num1,num2)=>{
+  return Number(num1).toFixed(num2);
+}
+export{tel,toFixed}
