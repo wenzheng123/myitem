@@ -9,35 +9,27 @@ import End from '@/components/End'
 import Introduction from '@/components/Introduction'
 import Pay from '@/components/Pay'
 import Pay1 from '@/components/Pay1'
+import Pay3 from '@/components/Pay3'
 import Shopping from '@/components/Shopping'
 import Lian from '@/components/Lian'
 import Lian1 from '@/components/Lian1'
 import Enter from '@/components/Enter'
 import New from '@/components/New'
-<<<<<<< HEAD
-
 import New1 from '@/components/New1'
 import New2 from '@/components/New2'
 import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
-
-
-
-=======
+import Yan2 from '@/components/Yan2'
 import Intro1 from '@/components/Intro1'
 import Intro2 from '@/components/Intro2'
-import CountDown from '@/components/CountDown'
-import Test from '@/components/Test'
->>>>>>> cc76777cfe4be4319145150e9b2fb74dfedeb4d7
+import High from '@/components/High'
+import High1 from '@/components/High1'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path:"/",
-      name:"Tou1",
-      component: Test
-    },
+
     {
       path:"/intro",
       name:"Introduction",
@@ -76,6 +68,16 @@ export default new Router({
       component:Enter
     },
     {
+      path:"/high",
+      name:"High",
+      component:High
+    },
+    {
+      path:"/high1",
+      name:"High1",
+      component:High1
+    },
+    {
       path:"/new",
       name:"New",
       component:New,
@@ -101,6 +103,11 @@ export default new Router({
       path:"/yan1",
       name:"Yan1",
       component:Yan1
+    },
+    {
+      path:"/yan2",
+      name:"Yan2",
+      component:Yan2
     },
     {
       path:"/tou2",
@@ -136,6 +143,11 @@ export default new Router({
       path:"/pay1",
       name:"Pay1",
       component: Pay1
+    },
+    {
+      path:"/pay3",
+      name:"Pay3",
+      component: Pay3
     },
     {
       path:"/shopping",
