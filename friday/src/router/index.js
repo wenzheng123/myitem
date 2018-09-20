@@ -22,10 +22,6 @@ import New2 from '@/components/New2'
 import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
 import Yan2 from '@/components/Yan2'
-<<<<<<< HEAD
-=======
-
->>>>>>> 48b99d7ab3a852bc60bdcd972a6fb5acd05675a8
 import High from '@/components/High'
 import High1 from '@/components/High1'
 import Intro1 from '@/components/Intro1'
@@ -35,12 +31,8 @@ import ConfirmOrder from '@/components/ConfirmOrder'
 import CountDown from '@/components/CountDown'
 import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
-<<<<<<< HEAD
-=======
 import Test from '@/components/Test'
 import LinkAge from '@/components/LinkAge'
-
->>>>>>> 48b99d7ab3a852bc60bdcd972a6fb5acd05675a8
 
 Vue.use(Router)
 
@@ -50,7 +42,7 @@ export default new Router({
     {
       path:"/",
       name:"Tou1",
-      component: Test
+      component: Tou1
     },
 
     {

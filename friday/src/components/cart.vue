@@ -303,7 +303,7 @@
         },
         confirm(){
           this.$router.push({
-            path:'/ConfirmOrder'
+            path:'/ConfirmOrder',
           })
         }
       },
