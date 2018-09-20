@@ -12,14 +12,11 @@ import VueAxios from 'vue-axios'
 import * as filters from './assets/filters/filters'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
-Vue.config.productionTip = false;
-
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key]);
 })
 Vue.config.productionTip = false
-Vue.use(VueAxios,axios);
+Vue.use(VueAxios,axios,ElementUI);
 
 
 new Vue({
@@ -27,5 +24,5 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});
 

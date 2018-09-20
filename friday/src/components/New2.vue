@@ -53,6 +53,7 @@
     methods:{
       // 登录
       ent(){
+        this.me=""
         $(".one0").css({
           display:'block',
           zIndex:1

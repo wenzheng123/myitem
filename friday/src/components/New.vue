@@ -17,7 +17,7 @@
           <span class="demo2"></span>
           <p class="me1"><span class="demo3"></span> 手机号码不正确，请重新输入</p>
 
-          <input type="text" placeholder="验证码">
+          <input type="text" v-model="me6" placeholder="验证码">
           <div class="two4_1">
           <div class="two4">
          <Yan1></Yan1>
@@ -26,7 +26,7 @@
           </div>
           <div class="two">
             <input type="text" v-model="me2" placeholder="手机验证码">
-            <p @click="huoQu">获取验证码</p>
+            <p @click="huoQu" >获取验证码</p>
             <input type="checkbox" style="width: 14px;height: 14px"  ><strong>自动登录</strong>
             <p  @click="chong"> <u> 忘记密码?</u></p>
             </div>
@@ -106,6 +106,7 @@
           me2:"",
           me3:"",
           me4:"",
+          me6:"",
           index:1,
            name:""
         }
@@ -125,16 +126,26 @@
                 alert("账户未注册,请前往注册");
                 $(".reset").css("display","none");
                 $(".new2").css("display","block")
+                console.log(123)
+                this.me = ""
+                this.me2 = ""
+                this.me6 = ""
               }else{
                 alert("登录成功")
                 this.name = this.me
                 $(".name,.name1").css("display","block")
+
+                this.$router.push({
+                  path:"/shopping"
+                })
               }
             })
 
           } else{
             alert("手机号错误")
             this.me = "";
+            this.me2 = ""
+            this.me6 = ""
           }
         },
 
@@ -144,14 +155,19 @@
           console.log(111)
         },
         new2(){
-          $(".reset").css("display","none")
-          $(".new2").css("display","block")
-          console.log(2222)
 
+            $(".reset").css("display","none")
+            $(".one0").css("display","block")
+            console.log(2222)
         },
           chong(){
-            $(".one0").css("display","none")
-            $(".reset").css("display","block")
+            if(this.me == ""){
+              alert("请输入手机号")
+            }else {
+
+              $(".one0").css("display", "none")
+              $(".reset").css("display", "block")
+            }
           },
 
         huoQu(){

@@ -33,14 +33,13 @@ import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
 import Test from '@/components/Test'
 import LinkAge from '@/components/LinkAge'
-
 Vue.use(Router)
 
 export default new Router({
   routes: [
 
     {
-      path:"/",
+      path:"/tou1",
       name:"Tou1",
       component: Tou1
     },
