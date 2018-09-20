@@ -15,44 +15,26 @@ import Lian from '@/components/Lian'
 import Lian1 from '@/components/Lian1'
 import Enter from '@/components/Enter'
 import New from '@/components/New'
-
-
-
-
 import New1 from '@/components/New1'
 import New2 from '@/components/New2'
 import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
-
 import Yan2 from '@/components/Yan2'
-import Intro1 from '@/components/Intro1'
-import Intro2 from '@/components/Intro2'
 import High from '@/components/High'
 import High1 from '@/components/High1'
-
-
-
-
-
 import Intro1 from '@/components/Intro1'
 import Intro2 from '@/components/Intro2'
 import CountDown from '@/components/CountDown'
 import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
-
-
-
 Vue.use(Router)
 
 export default new Router({
   routes: [
-
-
-
     {
-      path:"/",
+      path:"/tou1",
       name:"Tou1",
-      component: StoreClassify
+      component: Tou1
     },
 
     {
@@ -140,7 +122,6 @@ export default new Router({
       component: Tou2,
       children:[
         {
-
           path:'/allclassify',
           component:AllClassify,
           children:[

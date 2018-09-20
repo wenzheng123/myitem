@@ -7,8 +7,6 @@ import router from './router'
 import $ from 'jquery'
 import * as filters from './assets/filters/filters'
 Vue.config.productionTip = false;
-
-// Vue.prototype.$axios = axios
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key]);
 });
@@ -18,5 +16,5 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});
 

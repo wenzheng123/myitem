@@ -35,10 +35,12 @@
       </div>
 
     </div>
+    <End class="end"></End>
   </div>
 </template>
 
 <script>
+  import  End from  "@/components/End"
   import Tou1 from  "@/components/Tou1"
   import Tou2 from  "@/components/Tou2"
   import {realconsole} from "../../static/jquery.fly.min"
@@ -46,7 +48,8 @@
         name: "Shopping",
       components:{
           Tou1,
-        Tou2
+        Tou2,
+        End
       },
       data(){
           return{
@@ -107,6 +110,9 @@
 </script>
 
 <style scoped>
+  .end{
+    margin-top: 20px;
+  }
  .top{
    width: 127px;
    height: 40px;

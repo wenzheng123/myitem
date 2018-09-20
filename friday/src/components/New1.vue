@@ -16,7 +16,7 @@
       </div>
       <div class="two">
         <input type="checkbox" style="width: 14px;height: 14px" class = "aa"><strong>自动登录</strong>
-        <router-link to="/new"><p  @click="chong"> <u> 忘记密码?</u></p></router-link>
+        <p  @click="chong"> <u> 忘记密码?</u></p>
       </div>
     </div>
     <div class="one2">
@@ -100,8 +100,16 @@ import axios from 'axios'
         },
 
         chong(){
-          $(".one").css("display","none")
-          $(".reset").css("display","block")
+          console.log(2222)
+          if(this.me == ""){
+           alert("请输入手机号")
+            console.log(33333)
+          }else{
+            console.log(55555)
+            $(".one").css("display","none")
+            $(".reset").css("display","block")
+          }
+
         },
         huoQu(){
           this.index++
