@@ -110,7 +110,9 @@
               this.qu = this.province[index2].children[0].children[0].value
               this.E = this.qu1[0].id
               this.str1 = this.province[index2].value
-              console.log(this.str1)
+              this.str2 = this.shi
+              this.str3 = this.qu
+              console.log(this.str1,this.str2,this.str3)
 
             }
           }
@@ -125,7 +127,8 @@
               this.E = this.qu1[0].id
               // console.log(this.E)
               this.str2 = this.city[index3].value
-              console.log(this.str2)
+              this.str3 = this.qu
+              console.log(this.str1,this.str2,this.str3)
             }
           }
         },
@@ -138,7 +141,7 @@
             }
           }
           this.E=e;
-          console.log(this.str3)
+          console.log(this.str1,this.str2,this.str3)
         },
       },
       created:function(){
