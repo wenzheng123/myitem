@@ -25,8 +25,7 @@ import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
 
 import Yan2 from '@/components/Yan2'
-import Intro1 from '@/components/Intro1'
-import Intro2 from '@/components/Intro2'
+
 import High from '@/components/High'
 import High1 from '@/components/High1'
 
