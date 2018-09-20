@@ -29,7 +29,8 @@ import Intro2 from '@/components/Intro2'
 import CountDown from '@/components/CountDown'
 import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
-
+import Test from '@/components/Test'
+import LinkAge from '@/components/LinkAge'
 
 Vue.use(Router)
 
@@ -38,7 +39,7 @@ export default new Router({
     {
       path:"/",
       name:"Tou1",
-      component: StoreClassify
+      component: Test
     },
     {
       path:"/intro",
