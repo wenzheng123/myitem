@@ -22,6 +22,9 @@ import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
 import Intro1 from '@/components/Intro1'
 import Intro2 from '@/components/Intro2'
+import cart from '@/components/cart'
+import ConfirmOrder from '@/components/ConfirmOrder'
+
 import CountDown from '@/components/CountDown'
 
 Vue.use(Router)
@@ -45,7 +48,16 @@ export default new Router({
         },
       ]
     },
-
+    {
+      path:"/cart",
+      name:"cart",
+      component: cart
+    },
+    {
+      path:"/ConfirmOrder",
+      name:"ConfirmOrder",
+      component: ConfirmOrder
+    },
     {
       path:"/",
       name:"Tou1",

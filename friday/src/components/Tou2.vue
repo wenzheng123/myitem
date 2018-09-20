@@ -14,37 +14,30 @@
            <img src="../../static/img/tou1.png" alt="">
            个人中心
          </div>
-         <div :id="inputName" @click="goshop">
+         <div id="end" @click="goshop">
            <img  src="../../static/img/购物车.png" alt="">
            购物车<span class="show"></span>
          </div>
-         <p>
-           <img :id="end" src="../../static/img/购物车.png" alt="">
-           购物车
-         </p>
-
        </div>
        <ul class="top4">
          <li class="bol" v-for="item in arr2" @click="item.z3"><router-link :to="item.z2" >{{item.z1}}</router-link> </li>
-         <img src="" alt="">
+         <!--<img src="" alt="">-->
        </ul>
        <router-view class="allClassify"></router-view>
-
-
      </div>
-
    </div>
 </template>
 
 <script>
     export default {
         name: "Tou2",
-      props:{
-        inputName: String,
+        props:{
         inputNum: Number,
+        end:String,
         required: true,
-      },
-      data(){
+
+        },
+        data(){
           return{
             arr2:[
               {z1:"全部分类",z2:"/allclassify",z3:this.bol},
@@ -55,10 +48,9 @@
               {z1:"导航+",z2:"###",z3:this.bol1},
             ],
             index:0,
-
           }
-      },
-      watch:{
+        },
+        watch:{
         inputNum(newVal,oldVal){
           console.log(newVal,oldVal)
           $('.show').html('(' + newVal + ')')
@@ -69,7 +61,6 @@
         }
       },
       mounted(){
-
         $(".allClassify").css("display","none")
       },
       methods:{
@@ -83,23 +74,18 @@
             }else{
               $(".allClassify").css("display","block")
             }
-
-            console.log(111)
           },
           bol1(){
           }
 
       },
-      props:{
-        end:String,
-        required:true
-      }
     }
 </script>
 
 <style scoped>
 
 .show {
+  margin-right: 15px;
   float: right;
 }
 .input1 {
@@ -138,14 +124,10 @@
     right: 0;
     top: 50px;
   }
-  .top3 p img{
-    margin-top: -3px;
-    margin-right:15px;
-  }
-  .top3 p{
+  .top3 div{
     line-height: 40px;
     border:2px solid #e5e5e5;
-    margin-left: 15px;
+    margin-left: 5px;
     float: left;
     width: 127px;
     height: 40px;
@@ -153,8 +135,7 @@
     color: #666666;
   }
 .top3 div img{
-  vertical-align: middle;
-  margin: 0 8px;
+  margin: 0 10px;
 }
   .top2 p{
     margin-top: 2px;

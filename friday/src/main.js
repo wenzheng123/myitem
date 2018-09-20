@@ -8,13 +8,13 @@ import 'swiper/dist/css/swiper.min.css';
 import $ from 'jquery'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-Vue.config.productionTip = false
-Vue.use(VueAxios,axios);
 import * as filters from './assets/filters/filters'
-Vue.config.productionTip = false
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key]);
 })
+Vue.config.productionTip = false
+Vue.use(VueAxios,axios);
+
 
 /* eslint-disable no-new */
 

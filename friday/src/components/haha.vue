@@ -16,7 +16,8 @@
         <label class="ql-ipt">
           <input type="checkbox"
                  class="comman-ipt"
-                 @click="select(good.id)"><i></i></input>
+                 @click="select(good.id)"><i></i>
+          </input>
         </label>
         <a @click="toDetail(good.id)">
           <img class="good-img"

@@ -1,7 +1,7 @@
 <template>
     <div class="con">
       <Tou1></Tou1>
-      <Tou2 :inputName="aa" :inputNum="num1"></Tou2>
+      <Tou2 :inputNum="num1"></Tou2>
       <Jflb :slName="name"></Jflb>
       <ul class="conNav">
         <li class="conNav1" v-for="item in data">
@@ -47,7 +47,7 @@
           <div class="conD">
             <span>¥{{sg.zhekou}}</span>
             <span>¥{{sg.price}}</span>
-            <img @click="add();addProduct()" src="../../static/img/bus.png" alt="">
+            <img @click="add()" src="../../static/img/bus.png" alt="">
           </div>
         </li>
       </ul>
@@ -67,7 +67,7 @@
           <div class="conD">
             <span>¥{{sc.zhekou}}</span>
             <span>¥{{sc.price}}</span>
-            <img @click="add();addProduct()" src="../../static/img/bus.png" alt="">
+            <img @click="add()" src="../../static/img/bus.png" alt="">
           </div>
         </li>
       </ul>
@@ -87,7 +87,7 @@
           <div class="conD">
             <span>¥{{sg.zhekou}}</span>
             <span>¥{{sg.price}}</span>
-            <img @click="add();addProduct()" src="../../static/img/bus.png" alt="">
+            <img @click="add()" src="../../static/img/bus.png" alt="">
           </div>
         </li>
       </ul>
@@ -107,7 +107,7 @@
           <div class="conD">
             <span>¥{{sc.zhekou}}</span>
             <span>¥{{sc.price}}</span>
-            <img @click="add();addProduct()"  src="../../static/img/bus.png" alt="">
+            <img @click="add()"  src="../../static/img/bus.png" alt="">
           </div>
         </li>
       </ul>
@@ -116,7 +116,6 @@
 </template>
 
 <script>
-    import {realconsole} from "../../static/jquery.fly.min"
     import Jflb from "./Jflb";
     import Tou1 from "./Tou1";
     import Tou2 from "./Tou2";
@@ -157,33 +156,6 @@
             this.num1++;
             console.log(this.num1)
           },
-        addProduct(){
-          var offset = $('#end').offset();
-          var flyer = $('<img class="u-flyer" src="../../static/img/bus.png"/>');
-
-          var top = $(window).scrollTop();
-
-          console.log(event.pageX, event.pageY, $(window).scrollTop());
-
-          flyer.fly({
-            start: {
-              left: event.pageX,
-              top: event.pageY - top
-            },
-            end: {
-              left: offset.left,
-              top: offset.top,
-              width: 15,
-              height: 15,
-              opacity: 0,
-              zIndex:999,
-            }
-          });
-          $('.u-flyer').delay(800).animate(
-            {opacity: 0},10
-          );
-
-        }
       },
       created(){
         this.axios.get("/api/PHP/123/shouye.php",{params:{type:0}}).then(res=>{
