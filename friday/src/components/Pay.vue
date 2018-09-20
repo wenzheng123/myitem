@@ -178,7 +178,7 @@
     color: #666666;
   }
   .one3 span{
-    line-height: 45px;
+    line-height: 35px;
     text-align: center;
     display: inline-block;
     width: 38px;
@@ -186,7 +186,6 @@
   }
   .one3{
     color: #727472;
-    font-size: 14px;
     height: 36px;
     background: #f4fff2;
     border:2px solid #ccc;
@@ -197,6 +196,9 @@
   .one2 img{
     margin: 80px 0 60px 0;
   }
+
+
+
   .one2{
     text-align: center;
     height: 323px;

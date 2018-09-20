@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <Tou1></Tou1>
+    <Tou1 :inputName = "name"></Tou1>
     <div class="four1">
       <div class="four">
         <img src="../../static/img/end1.png" alt="">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="one2">
-          <p>登录</p>
+          <p @click = "enter">登录</p>
           <p>会员登录</p><br>
           <span>提示：未注册用户将直接成为礼拜五用户</span>
         </div>
@@ -77,10 +77,13 @@
         </div>
 
       </div>
+    <End class="end"></End>
     </div>
 </template>
 
 <script>
+  import axios from 'axios'
+  import End from "@/components/End"
   import  Yan from "@/components/Yan"
   import  Yan1 from "@/components/Yan1"
   import  Tou1 from "@/components/Tou1"
@@ -94,7 +97,8 @@
         Yan,
         Yan1,
         New1,
-        New2
+        New2,
+        End
       },
       data(){
         return{
@@ -103,23 +107,37 @@
           me3:"",
           me4:"",
           index:1,
-
+           name:""
         }
       },
-      mounted(){
 
-      },
       methods:{
-          gets(){
-            $.get("/api/PHP/two.php",
-              {type:2,
+        enter(){
+          // 正则手机号判断
+          if(this.me && /^1[3|4|5|8]\d{9}$/.test(this.me)){
+            // 数据库的调用
+            axios.get('/api/PHP/two.php',{params:{
+                type:2,
                 name:this.me,
-                password:this.me3,
-              },
-              function (data) {
-             console.log(data)
+              }}).then((aa)=>{
+              console.log(aa.data);
+              if(aa.data == 0){
+                alert("账户未注册,请前往注册");
+                $(".reset").css("display","none");
+                $(".new2").css("display","block")
+              }else{
+                alert("登录成功")
+                this.name = this.me
+                $(".name,.name1").css("display","block")
+              }
             })
-          },
+
+          } else{
+            alert("手机号错误")
+            this.me = "";
+          }
+        },
+
         new1(){
           $(".new1").css("display","block")
           $(".one0").css("display","none")
@@ -129,7 +147,7 @@
           $(".reset").css("display","none")
           $(".new2").css("display","block")
           console.log(2222)
-          this.gets()
+
         },
           chong(){
             $(".one0").css("display","none")
@@ -167,9 +185,6 @@
 </script>
 
 <style scoped>
-
-
-
 
 /*第一个登录页面*/
   .me1{
@@ -367,11 +382,9 @@
     width:397px;
     height: 500px;
     background: #ffffff;
-    /*overflow: hidden;*/
-    border: solid red;
     position: relative;
-    border-top:2px  solid #ccc;
-    border-bottom:2px  solid #ccc;
+    border-top:1px  solid #ccc;
+    border-bottom:1px  solid #ccc;
     float: right;
     margin-right: 320px;
 
@@ -383,9 +396,11 @@
   .three{
     width: 1920px;
     height: 500px;
-    margin: 0 auto;
+    margin: 40px auto;
     background: url("../../static/img/new.png") ;
     overflow: hidden;
+
+    z-index: 3333;
   }
   /*第二个*/
   .four p{
