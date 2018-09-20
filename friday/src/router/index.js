@@ -17,62 +17,33 @@ import Lian from '@/components/Lian'
 import Lian1 from '@/components/Lian1'
 import Enter from '@/components/Enter'
 import New from '@/components/New'
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 709f1e95c998583f0a99ba8b2e9fd288793c9282
 import New1 from '@/components/New1'
 import New2 from '@/components/New2'
 import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
-<<<<<<< HEAD
-=======
-
 import Yan2 from '@/components/Yan2'
-import Intro1 from '@/components/Intro1'
-import Intro2 from '@/components/Intro2'
 import High from '@/components/High'
 import High1 from '@/components/High1'
-
-
-
-
-
->>>>>>> 709f1e95c998583f0a99ba8b2e9fd288793c9282
 import Intro1 from '@/components/Intro1'
 import Intro2 from '@/components/Intro2'
 import cart from '@/components/cart'
 import ConfirmOrder from '@/components/ConfirmOrder'
-
 import CountDown from '@/components/CountDown'
-<<<<<<< HEAD
-=======
 import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
-
-
->>>>>>> 709f1e95c998583f0a99ba8b2e9fd288793c9282
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
 
-
-
     {
-<<<<<<< HEAD
-=======
       path:"/",
       name:"Tou1",
       component: StoreClassify
     },
 
     {
->>>>>>> 709f1e95c998583f0a99ba8b2e9fd288793c9282
       path:"/intro",
       name:"Introduction",
       component: Introduction,
@@ -98,11 +69,6 @@ export default new Router({
       path:"/ConfirmOrder",
       name:"ConfirmOrder",
       component: ConfirmOrder
-    },
-    {
-      path:"/",
-      name:"Tou1",
-      component: Tou1
     },
     {
       path:"/shouye",
