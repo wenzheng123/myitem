@@ -66,7 +66,6 @@
     margin-top: 20px;
   }
   .end3{
-
     text-align: center;
     height: 80px;
     margin: 0 auto;
@@ -89,7 +88,7 @@
   }
   .end2_4 {
     overflow: hidden;
-    margin: 30px 0 0 40px;
+    margin: 30px 0 0 39px;
 
   }
   .end2_3 p{
@@ -112,7 +111,7 @@
   .end2_1{
     position: relative;
     padding: 0 30px;
-    width: 1220px;
+    width: 1280px;
     height: 200px;
     margin: 20px auto;
 
@@ -154,7 +153,7 @@
     margin: 0 auto;
   }
 .end1{
-  border-top:2px solid #ccc;
+  border-top:1px solid #ccc;
   border-bottom:2px solid #ccc;
 }
 

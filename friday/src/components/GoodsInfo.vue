@@ -97,11 +97,6 @@
           this.max();
         }
       },
-      filters:{
-          toFixed(num1,num2){
-            return Number(num1).toFixed(num2);
-          }
-      },
       mounted(){
         axios.get('api/zhouwu/shangpin.php?type=0').then(res=>{
           this.$set(this.arr ,0, res.data[0]);

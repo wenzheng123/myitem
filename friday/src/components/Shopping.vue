@@ -64,7 +64,7 @@
 
       methods:{
         gets(){
-          $.get("/api/PHP/two.php",function (data) {
+          $.get("/api/PHP/two.php",{type:1},function (data) {
             console.log(data)
             this.arr1 = data
           }.bind(this))

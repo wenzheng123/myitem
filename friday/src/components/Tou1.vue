@@ -5,10 +5,14 @@
       <div class="left">所在城市: <span>北京朝阳区</span></div>
        <div class="right">
          <div class="right_1">
-         <p v-for="item in arr">{{item}}<span>|</span></p></div>
+
+           <span class="name">{{inputName}} </span>
+            &nbsp;<strong class="name1" @click ="name">退出</strong>
+         <p class="dl" v-for="item in arr">{{item}}<span>|</span></p></div>
          <div class="right_2">
            <img src="static/img/电话.png" alt="">
            <span>400-800-8820</span>
+
          </div>
        </div>
        </div>
@@ -32,12 +36,40 @@
           }
          },
       mounted(){
-          this.arr.unshift(this.aa)
+         this.arr.unshift(this.aa)
+        $(".dl").eq(0).click(function() {
+          location.replace('http://localhost:8081/#/new')
+        console.log("打印陈宫")
+          }
+        )
+      },
+      methods:{
+        name(){
+          console.log(888)
+          $(".name,.name1").css("display","none")
+        }
+      },
+      props:{
+        inputName:String,
+        required:true
       }
     }
 </script>
 
 <style scoped>
+  .name1{
+    display: none;
+    z-index: 1;
+    margin-right: -46px;
+    height: 30px;
+    width: 40px;
+    background: #eeeeee;
+  }
+  .name{
+    color: #5cb85c;
+    z-index: 1;
+
+  }
   .right_2{
     float: right;
     margin: -46px 0;

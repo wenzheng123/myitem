@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import {countDown} from "../server/countDown";
+  import {countDown} from "../assets/server/countDown";
 
   export default {
         name: "CountDown",

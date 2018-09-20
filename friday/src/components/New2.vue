@@ -1,17 +1,17 @@
 <template>
-  <div class="conten">
-    <div class="one0">
+  <div class="box">
+    <div class="five">
       <div class="one1">
 
         <input type="text" placeholder="请输入手机号" v-model="me">
         <span class="demo2"></span>
         <p class="me1"><span class="demo3"></span> 手机号码不正确，请重新输入</p>
-        <input type="password" placeholder="请输入密码（6-20位号码字符）">
-        <input type="password" placeholder="请再次输入密码确认">
+        <input type="password" placeholder="请输入密码（6-20位号码字符）" v-model="me3">
+        <input type="password" placeholder="请再次输入密码确认" v-model="me4">
         <input type="text" placeholder="验证码">
         <div class="two4_1">
           <div class="two4">
-            <Yan1></Yan1>
+            <Yan2></Yan2>
           </div>
         </div>
         <div class="two">
@@ -23,8 +23,8 @@
         <img @click="huan" class="new1" src="../../static/img/new4.png" alt=""><span>我已阅读并同意《礼拜五用户协议》</span>
       </div>
       <div class="one2">
-        <p>注册</p>
-        <p>登录</p>
+        <p @click="enter">注册</p>
+        <p @click = "ent">登录</p>
       </div>
 
     </div>
@@ -32,28 +32,66 @@
 </template>
 
 <script>
-  import Yan1 from "@/components/Yan1"
+  import axios from 'axios'
+  import Yan2 from "@/components/Yan2"
   import index from "../router";
   export default {
     name: "New2",
     components:{
-      Yan1
+      Yan2
     },
     data(){
       return{
         me:"",
         me2:"",
+        me3:"",
+        me4:"",
         index:1
       }
     },
 
     methods:{
+      // 登录
+      ent(){
+        $(".one0").css({
+          display:'block',
+          zIndex:1
+        })
+        $(".five").css("display","none")
+      },
+
+      enter() {
+        if (this.me && /^[1][3,4,5,7,8][0-9]{9}$/.test(this.me)) {
+          axios.get('/api/PHP/two.php', {
+            params: {
+              type: 3,
+              name: this.me,
+              password: this.me3,
+            }
+          }).then((response) => {
+            console.log(response.data, 1);
+            if (response.data == 0) {
+              alert("注册成功")
+            } else {
+              alert("该账户已存在")
+            }
+          })
+        } else {
+          alert("手机号错误");
+          this.me = "";
+          this.me3 = "";
+          this.me4 = "";
+        }
+      },
+
+
+
       chong(){
-        $(".one0").css("display","none")
+        $(".five").css("display","none")
         $(".reset").css("display","block")
       },
       new1(){
-        $(".one0").css("display","none")
+        $(".five").css("display","none")
       },
      huan(){
         this.index++
@@ -153,10 +191,7 @@
     margin-top: 15px;
     border-top:2px dashed #ccc;
   }
-  .one3{
-    margin-top: 24px;
-    position: relative;
-  }
+
   .one2 span {
     color: #ccc;
 
@@ -246,16 +281,7 @@
     font-size: 24px;
   }
 
-  .demo4,.demo5{
-    margin-top: 10px;
-    display:inline-block;
-    width:32px;
-    height:36px;
-    margin-left: 6px;
-    background: transparent url("../../static/img/jl2.png") no-repeat;
-  }
-  .demo5{ background-position:-79px 0;}
-  .demo4{ background-position:-49px 0;}
+
 
  .demo2,.demo3{
     margin-top: 10px;
@@ -273,10 +299,15 @@
     opacity: 0;
   }
   .demo3{ background-position:-37px 0;}
-  .one0{
+  .five{
     width: 310px;
     margin: 30px  auto 20px;
     position: relative;
     z-index: 999;
+  }
+  .box{
+    width: 390px;
+    height: 500px;
+    background: #ffffff;
   }
 </style>
