@@ -170,3 +170,14 @@ nav.page-nav-outer.dark .page-input-box button {
 }
 
 /*----------Dark Style End----------*/
+#PageNavId ul li,#PageNavId ul li a{
+  padding: 0;
+  border: 0;
+}
+#PageNavId ul{
+  display: flex;
+  padding: 0;
+  width: 770px;
+  align-items: center;
+  justify-content: space-between;
+}

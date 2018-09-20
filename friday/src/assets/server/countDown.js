@@ -29,4 +29,9 @@ let countDown = (time) => {
 
   return t;
 }
+// let findC = ()=>{
+//   $('#PageNavId').click(()=>{
+//     $('#PageNavId .active').click
+//   })
+// }
 export {countDown}
