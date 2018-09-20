@@ -40,7 +40,8 @@ import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
 import Test from '@/components/Test'
 import LinkAge from '@/components/LinkAge'
-
+import storeM from '@/components/storeM'
+import BuyM from '@/components/BuyM'
 
 Vue.use(Router)
 
@@ -52,7 +53,7 @@ export default new Router({
     {
       path:"/",
       name:"Tou1",
-      component: Test
+      component: BuyM
     },
 
     {
