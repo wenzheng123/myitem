@@ -10,6 +10,13 @@ import $ from 'jquery'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import * as filters from './assets/filters/filters'
+<<<<<<< HEAD
+=======
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
+Vue.config.productionTip = false;
+>>>>>>> 48b99d7ab3a852bc60bdcd972a6fb5acd05675a8
 
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key]);
