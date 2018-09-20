@@ -6,6 +6,9 @@ import App from './App'
 import router from './router'
 import $ from 'jquery'
 import * as filters from './assets/filters/filters'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
 Vue.config.productionTip = false;
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key]);
