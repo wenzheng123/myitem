@@ -3,7 +3,7 @@
       <div class="end1">
         <ul class="end1_1">
           <li><div class="demo1"></div> <span>优鲜保障</span>
-          <li><div class="demo2"></div> <span>全程监控</span></li>
+          <li><div class="demo7"></div> <span>全程监控</span></li>
           <li><div class="demo3"></div> <span>礼拜五特惠</span></li>
           <li><div class="demo4"></div> <span>基地直供</span></li>
           <li><div class="demo5"></div> <span>准时送达</span></li>
@@ -134,7 +134,7 @@
     float: left;
     font-size: 20px;
   }
- .demo1,.demo2,.demo3,.demo4,.demo5{
+ .demo1,.demo7,.demo3,.demo4,.demo5{
     margin-top: 10px;
     display:inline-block;
     width:45px;
@@ -142,7 +142,7 @@
     background: transparent url("../../static/img/jl.png") no-repeat;
   }
   .demo1{ background-position:0 0;}
- .demo2{ background-position:-55px 0 ;}
+ .demo7{ background-position:-55px 0 ;}
  .demo3{ background-position:-108px 0;}
  .demo4{ background-position:-160px 0;}
  .demo5{ background-position:-216px 0;}

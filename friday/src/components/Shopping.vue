@@ -152,13 +152,17 @@
     margin-left: 19px;
   }
  .one3_1 img:nth-of-type(1){
-   height: 297px;
-   width: 100%;
+   height: 290px;
+   width: 99%;
+   position: relative;
+   top: 1px;
+   left: 1px;
  }
   .one3_1{
     width: 304px;
     height: 433px;
     border: 1px solid #ccc;
+    /*text-align: center;*/
   }
   .one3{
     display: flex;

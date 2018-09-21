@@ -107,6 +107,7 @@
           me3:"",
           me4:"",
           me6:"",
+          em:"",
           index:1,
            name:""
         }
@@ -114,6 +115,10 @@
 
       methods:{
         enter(){
+
+          if(this.me2 == ""){
+              alert("手机验证错误")
+          }else
           // 正则手机号判断
           if(this.me && /^1[3|4|5|8]\d{9}$/.test(this.me)){
             // 数据库的调用
@@ -131,6 +136,7 @@
                 this.me2 = ""
                 this.me6 = ""
               }else{
+                localStorage.name = this.me
                 alert("登录成功")
                 this.name = this.me
                 $(".name,.name1").css("display","block")

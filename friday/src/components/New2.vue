@@ -8,7 +8,7 @@
         <p class="me1"><span class="demo3"></span> 手机号码不正确，请重新输入</p>
         <input type="password" placeholder="请输入密码（6-20位号码字符）" v-model="me3">
         <input type="password" placeholder="请再次输入密码确认" v-model="me4">
-        <input type="text" placeholder="验证码">
+        <input type="text" placeholder="验证码" v-model="me5">
         <div class="two4_1">
           <div class="two4">
             <Yan2></Yan2>
@@ -46,6 +46,7 @@
         me2:"",
         me3:"",
         me4:"",
+        me5:"",
         index:1
       }
     },
@@ -63,27 +64,54 @@
 
       enter() {
         if (this.me && /^[1][3,4,5,7,8][0-9]{9}$/.test(this.me)) {
-          axios.get('/api/PHP/two.php', {
-            params: {
-              type: 3,
-              name: this.me,
-              password: this.me3,
-            }
-          }).then((response) => {
-            console.log(response.data, 1);
-            if (response.data == 0) {
-              alert("注册成功")
-            } else {
-              alert("该账户已存在")
-            }
-          })
-        } else {
+               console.log("手机号正确")
+        }else {
           alert("手机号错误");
           this.me = "";
           this.me3 = "";
           this.me4 = "";
+          this.me2 = "";
+          this.me5 = ""
         }
-      },
+      if(this.me3 == "" && this.me4 == "") {
+        alert("密码不能为空")
+      }else if (this.me5 == ""){
+        alert("验证码错误")
+      }else if(this.me2 == ""){
+          alert("手机验证码错误")
+      }else if(this.me4 == this.me3){
+        axios.get('/api/PHP/two.php', {
+          params: {
+            type: 3,
+            name: this.me,
+            password: this.me3,
+
+          }
+        }).then((response) => {
+          console.log(response.data, 1);
+          if (response.data == 0) {
+            alert("注册成功")
+            // 登录
+            $(".one0").css({
+              display:'block',
+              zIndex:1
+            })
+            $(".five").css("display","none")
+
+            this.me = "";
+            this.me3 = "";
+            this.me4 = "";
+            this.me2 = "";
+            this.me5 = ""
+          } else {
+            alert("该账户已存在")
+          }
+        })
+      }else{
+        alert("密码不一致,请重新输入")
+      }
+        },
+
 
 
 

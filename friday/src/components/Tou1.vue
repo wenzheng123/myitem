@@ -6,7 +6,7 @@
        <div class="right">
          <div class="right_1">
 
-           <span class="name">{{inputName}} </span>
+           <span class="name">{{cc}}</span>
             &nbsp;<strong class="name1" @click ="name">退出</strong>
          <p class="dl" v-for="item in arr">{{item}}<span>|</span></p></div>
          <div class="right_2">
@@ -21,12 +21,14 @@
 </template>
 
 <script>
+  import axios from "axios"
   import Vue from "vue"
     export default {
         name: "Tou1",
          data(){
           return{
             aa:"登录",
+            cc:"",
             arr:[
               "我的订单",
               "我的消息",
@@ -36,6 +38,17 @@
           }
          },
       mounted(){
+          if(localStorage.name == ""){
+            $(".name,.name1").css("display","none")
+          }
+          axios.get('/api/PHP/two.php',{params:{
+              type:4,
+              name:localStorage.name,
+            },
+
+          }).then(function (data) {
+            this.cc = data.data[0].name
+          }.bind(this))
          this.arr.unshift(this.aa)
         $(".dl").eq(0).click(function() {
           location.replace('http://localhost:8081/#/new')
@@ -47,18 +60,17 @@
         name(){
           console.log(888)
           $(".name,.name1").css("display","none")
+          localStorage.name = ""
+
         }
       },
-      props:{
-        inputName:String,
-        required:true
-      }
+
     }
 </script>
 
 <style scoped>
   .name1{
-    display: none;
+    /*display: none;*/
     z-index: 1;
     margin-right: -46px;
     height: 30px;
