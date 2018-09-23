@@ -96,5 +96,6 @@
  .content{
    width: 1280px;
    margin: 0 auto;
+   margin-top: 100px;
  }
 </style>

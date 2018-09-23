@@ -142,6 +142,7 @@
   }
   .classifylist li a{
     display: block;
+    text-decoration: none;
     width: 100%;
     height: 100%;
   }
