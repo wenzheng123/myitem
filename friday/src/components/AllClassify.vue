@@ -1,38 +1,41 @@
 <template>
   <div class="allClassify">
-    <p v-for="(item,index) in list" @mouseenter="changeBgi(index)" :class="{c:indexC==index}">
+    <p v-for="(item,index) in list" @click="changeBgi(index)" :class="{c:indexC==index}">
       <span :style="'background-position-y:'+(-index*56)+'px'" :class="{x:indexC==index}"></span>
       {{item}}
     </p>
-    <router-view class="classifylist"></router-view>
+    <classify-list :aa="indexC" class="mm"></classify-list>
   </div>
 </template>
 
 <script>
+    import ClassifyList from "./ClassifyList";
     export default {
         name: "AllClassify",
+      components: {ClassifyList},
       data(){
           return{
             list:['新鲜水果','生猛海鲜','肉类家禽','蛋奶素食','田园蔬菜','零食酒水','粮油杂货','礼品卡券','家具用品'],
-            indexC:-1,
+            indexC:0,
           }
       },
       methods:{
         changeBgi(i){
           this.indexC = i;
-          this.$router.push({path:'/classifylist',query:{num:i}})
         }
       },
       mounted(){
         $('span:last').css('background-position-y','-444px');
-        if (this.indexC == -1){
-          this.$router.push({path:'/allclassify'});
-        }
+
       }
     }
 </script>
 
 <style scoped>
+  .allClassify .mm{
+    position: absolute;
+    left: 168px;
+  }
 .allClassify{
   width: 170px;
   height: 500px;
@@ -40,6 +43,7 @@
   border-top: 1px #efeeec solid;
   position: relative;
   box-sizing: border-box;
+  background-color: #fff;
 }
   .allClassify p{
     height: 56px;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
 
   <div class="swiper-container lbt">
     <div class="swiper-wrapper">
@@ -36,7 +36,11 @@
         },
         slName:{
           type: Array
-        }
+        },
+        slName1:{
+          type: Array
+        },
+        required: true,
       },
       created(){
           this.src='';
@@ -44,7 +48,11 @@
             this.src = this.inputName
           }else if (this.slName){
             this.src = this.slName
+          }else if (this.slName1){
+            this.src = this.slName1
           }
+
+
         // this.axios.get("/api/PHP/123/myaladdin.php").then(res=>{
         //   //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
         //      this.src=res.data;//获取数据
@@ -89,7 +97,7 @@
     /*overflow: hidden;*/
     position: relative;
     z-index: 1;
-    margin: 0 auto;
+    margin: 225px auto 0;
   }
   .swiper-slide>img{
     height: 500px;

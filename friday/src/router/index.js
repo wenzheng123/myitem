@@ -33,11 +33,27 @@ import Host from '@/components/Host'
 import StoreClassify from '@/components/StoreClassify'
 import Test from '@/components/Test'
 import LinkAge from '@/components/LinkAge'
+import TongC from '@/components/TongC'
+import Map from '@/components/Map'
 Vue.use(Router)
 
 export default new Router({
   routes: [
-
+    {
+      path:"/",
+      name:"shouye",
+      component: shouye
+    },
+    {
+      path:"/Map",
+      name:"Map",
+      component: Map
+    },
+    {
+      path:"/TongC",
+      name:"TongC",
+      component: TongC
+    },
     {
       path:"/tou1",
       name:"Tou1",
@@ -142,12 +158,7 @@ export default new Router({
       path:"/tou2",
       name:"Tou2",
       component: Tou2,
-      children:[
-        {
-          path:'/allclassify',
-          component:AllClassify,
-        },
-      ]
+
     },
     {
       path:"/end",

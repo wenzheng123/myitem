@@ -57,6 +57,13 @@
 </script>
 
 <style scoped>
+  .box{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #eeeeee;
+    z-index: 9999;
+  }
   .name1{
     display: none;
     z-index: 1;

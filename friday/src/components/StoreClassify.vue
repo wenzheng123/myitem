@@ -33,6 +33,7 @@
 </template>
 
 <script>
+  import fenPage from '../../static/chajian'
   import axios from 'axios'
     export default {
         name: "StoreClassify",
@@ -45,7 +46,7 @@
       },
       methods:{
           getData(){
-            axios.get('/api/zhouwu/storefl.php').then((res)=>{
+            axios.get('/api/PHP/data/storefl.php').then((res)=>{
               this.arr = res.data;
             })
           },
@@ -77,6 +78,7 @@
         }
       },
       mounted(){
+        fenPage.page();
         $('.a1 a').eq(0).css('color','#498e3d');
           $('.a1 a').click(function () {
             $('.a1 a').css('color','#666666');

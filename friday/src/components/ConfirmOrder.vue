@@ -241,6 +241,7 @@
   .revise{
     width: 550px;
     height: 167px;
+    margin-top: 50px;
     overflow: hidden;
     display: none;
     position: relative;

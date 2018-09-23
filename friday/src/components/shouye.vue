@@ -1,6 +1,6 @@
 <template>
     <div class="con">
-      <Tou1></Tou1>
+      <Tou1 ></Tou1>
       <Tou2 :inputNum="num1"></Tou2>
       <Jflb :slName="name"></Jflb>
       <ul class="conNav">
@@ -23,99 +23,42 @@
         </li>
         <li>
           <img class="img" src="../../static/img/shouye/kaishi.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>5天</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>15</span>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
-          <span>35</span>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
-          <span>20</span>
+          <span>{{time[0]}}天</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>{{time[1]}}</span>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+          <span>{{time[2]}}</span>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+          <span>{{time[3]}}</span>
           <a href="###">更多></a>
         </li>
       </ul>
       <Shouyelb></Shouyelb>
-      <ul class="conNav3">
+      <div v-for="(item,index) in shop">
+      <ul class="conNav3" >
         <li>
           <img class="img" src="../../static/img/shouye/zhong.png" alt="">
-          <span class="navSpan1">新鲜水果</span>
+          <span class="navSpan1">{{item.type}}</span>
           <span class="navSpan2">采集新疆优质水果生产基地,品质一流</span>
         </li>
         <li>更多></li>
       </ul>
       <ul class="con3">
-        <li v-for="sg in shuiguo">
-          <img class="navImg" :src="sg.src" alt="">
-          <p class="conP">{{sg.name}}</p>
-          <p class="conP1">{{sg.intro}}</p>
+        <li v-for="(item1,index1) in item.list" >
+          <img class="navImg" :src="item1.src" alt="">
+          <p class="conP">{{item1.name}}</p>
+          <p class="conP1">{{item1.intro}}</p>
           <div class="conD">
-            <span>¥{{sg.zhekou}}</span>
-            <span>¥{{sg.price}}</span>
-            <img @click="add()" src="../../static/img/bus.png" alt="">
+            <span>¥{{item1.zhekou}}</span>
+            <span>¥{{item1.price}}</span>
+            <img @click="add();addCart(item1);" src="../../static/img/bus.png" alt="">
           </div>
         </li>
       </ul>
-      <ul class="conNav3">
-        <li>
-          <img class="img" src="../../static/img/shouye/zhong.png" alt="">
-          <span class="navSpan1">水产海鲜</span>
-          <span class="navSpan2">国内外新鲜到港的鱼虾蟹贝，我们全都有</span>
-        </li>
-        <li>更多></li>
-      </ul>
-      <ul class="con3">
-        <li v-for="sc in shuichan">
-          <img class="navImg" :src="sc.src" alt="">
-          <p class="conP">{{sc.name}}</p>
-          <p class="conP1">{{sc.intro}}</p>
-          <div class="conD">
-            <span>¥{{sc.zhekou}}</span>
-            <span>¥{{sc.price}}</span>
-            <img @click="add()" src="../../static/img/bus.png" alt="">
-          </div>
-        </li>
-      </ul>
-      <ul class="conNav3">
-        <li>
-          <img class="img" src="../../static/img/shouye/zhong.png" alt="">
-          <span class="navSpan1">肉类禽蛋</span>
-          <span class="navSpan2">采集新疆优质水果生产基地,品质一流</span>
-        </li>
-        <li>更多></li>
-      </ul>
-      <ul class="con3">
-        <li v-for="sg in shuiguo">
-          <img class="navImg" :src="sg.src" alt="">
-          <p class="conP">{{sg.name}}</p>
-          <p class="conP1">{{sg.intro}}</p>
-          <div class="conD">
-            <span>¥{{sg.zhekou}}</span>
-            <span>¥{{sg.price}}</span>
-            <img @click="add()" src="../../static/img/bus.png" alt="">
-          </div>
-        </li>
-      </ul>
-      <ul class="conNav3">
-        <li>
-          <img class="img" src="../../static/img/shouye/zhong.png" alt="">
-          <span class="navSpan1">蛋奶速食</span>
-          <span class="navSpan2">国内外新鲜到港的鱼虾蟹贝，我们全都有</span>
-        </li>
-        <li>更多></li>
-      </ul>
-      <ul class="con3" >
-        <li v-for="sc in shuichan">
-          <img class="navImg" :src="sc.src" alt="">
-          <p class="conP">{{sc.name}}</p>
-          <p class="conP1">{{sc.intro}}</p>
-          <div class="conD">
-            <span>¥{{sc.zhekou}}</span>
-            <span>¥{{sc.price}}</span>
-            <img @click="add()"  src="../../static/img/bus.png" alt="">
-          </div>
-        </li>
-      </ul>
+      </div>
       <end></end>
     </div>
 </template>
 
 <script>
+  import {countDown} from "../assets/server/countDown";
     import Jflb from "./Jflb";
     import Tou1 from "./Tou1";
     import Tou2 from "./Tou2";
@@ -130,10 +73,12 @@
         Tou1,
         Jflb
       },
+
       data(){
           return {
             num1:0,
             aa:'end',
+
             data:[
               {url:'../../static/img/shouye/yangrou.png',p1:'内蒙古草原',p2:'羔羊羊精肉'},
               {url:'../../static/img/shouye/ningmeng.png',p1:'新西兰柠檬',p2:'鲜橙靓皮 柠香清新'},
@@ -147,32 +92,82 @@
               {name:'../../static/img/shouye/sylb.png',p1:'',p2:''},
               {name:'../../static/img/shouye/sylb.png',p1:'',p2:''},
             ],
-            shuiguo:[],
-            shuichan:[],
+            time:[],
+            shop:[
+              {type:'新鲜水果',list:[]},
+              {type:'水产海鲜',list:[]},
+              {type:'肉类禽蛋',list:[]},
+              {type:'蛋奶速食',list:[]},
+            ],
           }
       },
       methods:{
+          addCart(item1){
+          console.log(item1)
+            this.axios.get("/api/PHP/123/car.php",{params:{
+              state:2,sid:item1.id,type:item1.type,src:item1.src,name:item1.name,guige:item1.guige,price:item1.zhekou
+              }}).then(res=>{
+              //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
+              res.data;//获取数据
+              console.log(res.data)
+            })
+          },
           add(){
-            this.num1++;
+            ++this.num1;
             console.log(this.num1)
           },
+        tArr(){
+          var m = 0;
+          var flag = true;
+          this.$set(this.arr1,m,[]);
+          this.$set(this.arr1[0],0,this.arr[0]);
+          for (var i = 1; i < this.arr.length; i++){
+            flag = true;
+            for (var j = 0; j < this.arr1.length; j++){
+              if(this.arr[i].time == this.arr1[j][0].time){
+                this.$set(this.arr1[j],this.arr1[j].length,this.arr[i]);
+                flag = false;
+                break;
+              }
+            }
+            if(flag){
+              m++;
+              this.$set(this.arr1,m,[]);
+              this.$set(this.arr1[m],0,this.arr[i]);
+            }
+          }
+        }
+
       },
       created(){
-        this.axios.get("/api/PHP/123/shouye.php",{params:{type:0}}).then(res=>{
+        this.axios.get("/api/PHP/123/shouye.php",{params:{state:1,type:'新鲜水果'}}).then(res=>{
           //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
-          this.shuiguo=res.data;//获取数据
-          console.log(this.shuiguo)
+          res.data;//获取数据
+         this.shop[0].list=res.data
         })
-        this.axios.get("/api/PHP/123/shouye.php",{params:{type:1}}).then(res=>{
+
+        this.axios.get("/api/PHP/123/shouye.php",{params:{state:1,type:'水产海鲜'}}).then(res=>{
           //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
-          this.shuichan=res.data;//获取数据
-          console.log(this.shuichan)
+          res.data;//获取数据
+          this.shop[1].list=res.data
         })
+        this.axios.get("/api/PHP/123/shouye.php",{params:{state:1,type:'肉类禽蛋'}}).then(res=>{
+          //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
+          res.data;//获取数据
+          this.shop[2].list=res.data
+        })
+        this.axios.get("/api/PHP/123/shouye.php",{params:{state:1,type:'蛋奶速食'}}).then(res=>{
+          //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
+          res.data;//获取数据
+          this.shop[3].list=res.data
+        })
+     console.log(this.shop)
       },
       mounted(){
           $('.conNav1:first').css( 'margin-left',0)
           $('.jl:odd').css('background-position','0 -50px')
-        $('.con3:last').css('margin-bottom','40px')
+          $('.con3:last').css('margin-bottom','40px')
+          this.time = countDown('2018-9-22 0:0:0');
       }
     }
 

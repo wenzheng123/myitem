@@ -27,14 +27,14 @@
         <span>购物车</span>
       </div>
       <div class="con2_2">
-        <table class="con2_3" v-for="(item,index) in goodsObj">
+        <table class="con2_3" v-for="(item,index) in arr">
           <col width="30%"></col>
           <col width="10%"></col>
           <col width="10%"></col>
           <col width="15%"></col>
           <col width="10%"></col>
           <col width="25%"></col>
-          <tr class="tr1">
+          <tr class="tr1" style="text-align: center">
             <th>
               <img @click="chooseAll(item,index)" :src="item.bol?src1:src2" alt="">
               <span>{{item.name}}</span>
@@ -48,7 +48,7 @@
           <tr class="tr2" v-for="(item1,index1) in item.list">
             <td>
               <img @click="choose(item1,index,index1)" :src="item1.bol?src1:src2" alt="">
-              <img :src="item1.url" alt="">
+              <img class="spsrc" :src="item1.src" alt="">
               <span>{{item1.name}}</span>
             </td>
               <td >{{item1.guige}}</td>
@@ -109,30 +109,36 @@
       },
       data(){
           return {
-            bol:true,
+            bol:'',
             bol1:true,
             src1:'../../static/img/car/no.png',
             src2:'../../static/img/car/yes.png',
             num:0,
-            goodsObj:[
-              {
-                name:'爱果果水果店',
-                bol:true,
-                list:[
-                  {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
-                  {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
-                ]
-              },
-              {
-                name:'爱果果水果店',
-                bol:true,
-                list:[
-                  {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
-                  {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
-                  {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
-                ]
-              }
-            ]
+            arr1:[],
+            arr:[],
+            car:[],
+            car1:[],
+            goodsObj1:[],
+            list1:[],
+            // goodsObj:[
+            //   {
+            //     name:'爱果果水果店',
+            //     bol:true,
+            //     list:[
+            //       {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
+            //       {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
+            //     ]
+            //   },
+            //   {
+            //     name:'爱果果水果店',
+            //     bol:true,
+            //     list:[
+            //       {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
+            //       {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
+            //       {url:'../../static/img/car/lizhi.png',name:'云南蒙自石榴 8个装',guige:'8个装',price:569,num:1,bol:true,},
+            //     ]
+            //   }
+            // ]
           }
       },
       watch:{
@@ -140,13 +146,11 @@
           console.log(newVal/1,oldVal/1)
         },
       },
-      updated(){
-      },
       methods:{
           //全选所有商店
         chooseAllShop(){
           this.bol1 = !this.bol1
-          this.goodsObj.forEach((goodsObj,index,arr)=> {
+          this.arr.forEach((goodsObj,index,arr)=> {
             goodsObj.list.forEach((list,index,arr)=> {
               if(this.bol1 == true){
                 goodsObj.bol = true;
@@ -160,56 +164,46 @@
         },
         //删除全部商品
         dellAllShop(){
-          //var len =this.goodsObj.length
-          for(var i=0;i<this.goodsObj.length;i++){
-          if(this.goodsObj[i].bol == true){
+          var state = 0;
+          this.arr.forEach((goodsobj,index,arr)=>{
+            if(goodsobj.bol==true){
+              state++
+            }
+          })
+          console.log(state)
+          if(state==this.arr.length){
             alert('请选择宝贝哦!')
             return;
           }else{
+          for(var i=0;i<this.arr.length;i++){
             if (confirm("确认删除吗?")) {
-              for (var i = this.goodsObj.length - 1; i >= 0; i--) {
-                if (this.goodsObj[i].bol == false) {
-                  this.goodsObj.splice(i, 1)
+              for (var i = this.arr.length - 1; i >= 0; i--) {
+                if (this.arr[i].bol == false) {
+                  this.arr.splice(i, 1)
                 }
               }
             }
-            else {
-              return;
-            }
-            if (this.goodsObj.length == 0) {
+            if (this.arr.length == 0) {
               console.log(this.bol)
               this.bol = false
             }
+          }
             return;
           }
-          }
-          // this.goodsObj.forEach((goodsObj,index,arr)=>{
-          //   console.log(goodsObj,index,arr)
-          //   if(goodsObj.bol == false){
-          //     console.log(index)
-          //     arr.splice(index,1)
-          //   }else if(goodsObj.bol == false){
-          //     console.log(index)
-          //     arr.splice(index,1)
-          //      //arr.splice(0,arr.length)
-          //   }
-          //   // console.log($.inArray(index, arr))
-          // })
         },
           //删除单个
         del(index,index1){
           if(confirm("确认删除吗")){
-            this.goodsObj[index].list.splice(index1,1)
+            this.arr[index].list.splice(index1,1)
           }
           else{
             return;
           }
-
         },
         //全选价格
         totalAll(){
           var totalAllNum = 0;
-          this.goodsObj.forEach((goodsObj,index,arr)=>{
+          this.arr.forEach((goodsObj,index,arr)=>{
             totalAllNum += this.total(index)
           })
           //console.log($('.total').text())
@@ -218,7 +212,7 @@
           //店铺全选
         chooseAll(item,index){
           item.bol = !item.bol
-          var list = this.goodsObj[index].list,
+          var list = this.arr[index].list,
             len = list.length;
           if(item.bol==true){
             for (var i = 0; i < len; i++ ) {
@@ -233,7 +227,7 @@
         //计算每个店铺总价
         total(index){
           var totalNum = 0,
-            list = this.goodsObj[index].list;
+            list = this.arr[index].list;
           list.forEach(function(item, index, arr) {
             if ( list[index].bol == false ) {
               var unit1 = list[index].num*list[index].price
@@ -250,8 +244,8 @@
           if(item1.bol == false){
             this.num++
           }
-          console.log(this.num,this.goodsObj[index].list.length)
-          if (this.num == this.goodsObj[index].list.length){
+          console.log(this.num,this.arr[index].list.length)
+          if (this.num == this.arr[index].list.length){
             this.num = 0
             return  false
           }
@@ -261,30 +255,24 @@
         choose(item1,index,index1){
           item1.bol = !item1.bol
           if(item1.bol == true){
-            this.goodsObj[index].bol = true
+            this.arr[index].bol = true
             this.bol1 =true
            }else{
           // 判断是否选择当前店铺的全选
           var flag = 0;
-          console.log(this.goodsObj[index].list.length)
-          for (var i = 0; i < this.goodsObj[index].list.length; i++ ) {
-            if (this.goodsObj[index].list[i].bol == false) {
+          console.log(this.arr[index].list.length)
+          for (var i = 0; i < this.arr[index].list.length; i++ ) {
+            if (this.arr[index].list[i].bol == false) {
               flag++;
             }
           }
-          if (flag==this.goodsObj[index].list.length) {
-            this.goodsObj[index].bol = false
+          if (flag==this.arr[index].list.length) {
+            this.arr[index].bol = false
           }
           }
-          // if(item1.bol == true){
-          //   this.goodsObj[index].bol = true
-          //   this.bol1 =true
-          //  }else if(this.aa(item1,index)==false){
-          //   this.goodsObj[index].bol = false
-          // }
         },
         numChange(index,index1,numChange){
-          var goods = this.goodsObj[index].list[index1],
+          var goods = this.arr[index].list[index1],
             _this = this;
           if ( numChange == 1 ) {
             goods.num++;
@@ -294,9 +282,6 @@
           if ( goods.num <= 1 ) {
             goods.num = 1;
           }
-          // if ( goods.num >= goods.realStock ) {
-          //   goods.num = goods.realStock;
-          // }
         },
         quHome(){
           this.$router.push({path:'/shouye'})
@@ -307,46 +292,90 @@
           })
         }
       },
-      updated(){
-          console.log(this.bol)
-        if(this.bol == true){
-          $('.con1').css('visibility','hidden')
-          $('.con').css('height','100%')
-        }else{
-          $('.con2').css('visibility','hidden')
-          $('.con1').css({
-            position:'relative',
-            visibility:'visible'
-          })
-          $('.con').css('height','490px')
-        }
+      updated() {
+
+      },
+      created(){
+        // goodsObj:[
+        //   {name:'',bol:true,list:[]}
+        // ],
+
       },
       mounted(){
-        if(this.bol == true){
-          $('.con1').css('visibility','hidden')
-          $('.con').css('height','100%')
-        }else{
-          $('.con2').css('visibility','hidden')
-          $('.con1').css({
-            position:'relative',
-            visibility:'visible'
-          })
-          $('.con').css('height','490px')
-        }
-        $('.tr1>th').not($('.tr1>th:first')).css('text-align','center')
-        $('.tr2>td').not($('.tr2>td:first')).css('text-align','center')
+        this.axios.get('/api/PHP/123/car.php',{params:{state:0}}).then(function (res) {
+          for(var i in res.data){
+            res.data[i].bol = true;
+          }
+          this.arr = [];
+          for(var i in res.data){
+            if(this.arr.length === 0){
+              var  obj = {name:res.data[i].type,list:[],bol:true};
+              obj.list.push(res.data[i]);
+              this.arr.push(obj)
+            }else {
+              var bol = true;
+              for(var k in this.arr){
+                if(res.data[i].type === this.arr[k].name){
+                  this.arr[k].list.push(res.data[i]);
+                  bol =false;
+                  break;
+                }
+              }
+              if(bol){
+                var  obj = {name:res.data[i].type,list:[],bol:true};
+                obj.list.push(res.data[i]);
+                this.arr.push(obj)
+              }
+            }
+          }
+           console.log(this.arr)
+          if(this.arr.length == 0){
+                $('.con1').css('display','block')
+            $('.tr1>th').not($('.tr1>th:first')).css('text-align','center')
+            $('.tr2>td').not($('.tr2>td:first')).css('text-align','center')
+              }else{
+                $('.con2').css('display','block')
+            $('.tr1>th').not($('.tr1>th:first')).css('text-align','center')
+            $('.tr2>td').not($('.tr2>td:first')).css('text-align','center')
+              }
+        }.bind(this));
+        // this.axios.get("/api/PHP/123/car.php",{params:{state:0}}).then(res=>{
+        //   //这里是ES6的写法，get请求的地址，是小编自己在网站上存放的php文件，后面将介绍其编写，也可以自己定义
+        //   res.data;//获取数据
+        //   console.log(res.data);
+        //   this.car = res.data;
+        //   for(var i=0;i<this.car1.length;i++){
+        //     this.$set(this.goodsObj1,i,{name:this.car1[i],bol:true,list:[]})
+        //   }
+        //
+        //   console.log(this.goodsObj1)
+        //   if(res.data.length == 0){
+        //     $('.con1').css('display','block')
+        //   }else{
+        //     $('.con2').css('display','block')
+        //   }
+        // })
+
 
       }
     }
 </script>
 
 <style scoped>
+  .spsrc{
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    overflow: hidden;
+    border: 1px solid #e4e4e4;
+  }
   .cartNav1 .color{
     color: rgb(240, 130, 0);
    }
   .cartNav0{
     width: 100%;
     height: 130px;
+    margin-top: 50px;
     overflow: hidden;
     border-bottom: 1px solid #e4e4e4;
   }
@@ -368,13 +397,15 @@
   }
   .con{
     height: 100%;
+    min-height: 490px;
     margin-bottom: 100px;
     overflow: hidden;
   }
   .con1{
   height: 490px;
-  position: absolute;
-}
+    position: relative;
+    display: none;
+   }
   .conn{
     width: 330px;
     height: 130px;
@@ -405,6 +436,7 @@
   .con2{
     width: 1280px;
     margin: 0 auto;
+    display: none;
     text-align: left;
   }
   .con2_1{
@@ -435,6 +467,9 @@
   }
   .tr1 img{
     margin-left: 20px;
+  }
+  .tr1 th{
+    text-align: center;
   }
   .tr1>th:nth-of-type(1){
     float: left;

@@ -22,7 +22,7 @@ function PageNavCreate(id,props){
         return false;
     }
 
-    // this.target.innerHTML = "";
+    this.target.innerHTML = "";
     $('<div class="page-nav-inner clearfloat">'+
                     '<ul class="pagination">'+
                     '</ul>'+

@@ -49,6 +49,7 @@
     width: 1280px;
     display: flex;
     justify-content: space-between;
+    margin:20px auto 0;
   }
 .host div{
   display: inline-block;

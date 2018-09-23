@@ -1,6 +1,6 @@
 <template>
 <div class="classifylist">
-<div v-for="(item1,key) in list[$route.query.num]">
+<div v-for="(item1,key) in list[aa]">
   <p>{{key}}</p>
   <ul>
     <li v-for="item2 in item1"><router-link to="###">{{item2}}</router-link></li>
@@ -12,9 +12,12 @@
 <script>
     export default {
         name: "ClassifyList",
+      props:{
+        aa:Number,
+        required: true,
+      },
       data(){
           return{
-            i:0,
             list:[
               {
               '新鲜水果':['草莓','葡萄','香蕉','苹果','草莓','葡萄','香蕉','苹果'],
@@ -90,6 +93,8 @@
               }
             ]
           }
+      },
+      mounted(){
       }
     }
 </script>
@@ -131,7 +136,7 @@
     line-height:18px;
     text-align: center;
     position: relative;
-    left: 1px;
+    left: 2px;
     box-sizing: border-box;
     margin-bottom: 12px;
   }

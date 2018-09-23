@@ -110,7 +110,6 @@
 }
   .end2_1{
     position: relative;
-    padding: 0 30px;
     width: 1280px;
     height: 200px;
     margin: 20px auto;
@@ -126,13 +125,16 @@
    margin: 20px 50px 0 0 ;
  }
   .end1_1 li{
+    flex: 1;
     text-align: center;
-    width: 250px;
+    /*width: 250px;*/
     height: 66px;
     border-right: 2px solid #ccc;
     margin: 20px auto;
     float: left;
     font-size: 20px;
+    position: relative;
+    left: 2px;
   }
  .demo1,.demo2,.demo3,.demo4,.demo5{
     margin-top: 10px;
@@ -151,6 +153,9 @@
     width: 1280px;
     height: 107px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
   }
 .end1{
   border-top:1px solid #ccc;

@@ -15,37 +15,40 @@
            个人中心
          </div>
          <div id="end" @click="goshop">
+           <div class="show" v-if="inputNum">{{inputNum}}</div>
            <img  src="../../static/img/购物车.png" alt="">
-           购物车<span class="show"></span>
+           购物车
          </div>
        </div>
        <ul class="top4">
          <li class="bol" v-for="item in arr2" @click="item.z3"><router-link :to="item.z2" >{{item.z1}}</router-link> </li>
          <!--<img src="" alt="">-->
        </ul>
-       <router-view class="allClassify"></router-view>
+       <all-classify class="zz"></all-classify>
      </div>
    </div>
 </template>
 
 <script>
+
+    import AllClassify from "./AllClassify";
     export default {
         name: "Tou2",
-        props:{
-        inputNum: Number,
+      components: {AllClassify},
+      props:{
+        inputNum:Number,
         end:String,
         required: true,
-
         },
         data(){
           return{
             arr2:[
-              {z1:"全部分类",z2:"/allclassify",z3:this.bol},
+              {z1:"全部分类",z2:"###",z3:this.bol},
               {z1:"首页",z2:"/shouye",z3:this.bol1},
-              {z1:"同城",z2:"###",z3:this.bol1},
-              {z1:"礼拜五",z2:"###",z3:this.bol1},
+              {z1:"同城",z2:"/TongC",z3:this.bol1},
+              {z1:"礼拜五",z2:"/high",z3:this.bol1},
               {z1:"积分商城",z2:"/Jifen",z3:this.bol1},
-              {z1:"导航+",z2:"###",z3:this.bol1},
+              {z1:"导航+",z2:"/Map",z3:this.bol1},
             ],
             index:0,
           }
@@ -53,11 +56,8 @@
         watch:{
         inputNum(newVal,oldVal){
           console.log(newVal,oldVal)
-          $('.show').html('(' + newVal + ')')
-          $('.show').css('color','red')
-          if(newVal>=100){
-            $('#end img').css('margin',0)
-          }
+          $('.show').html(newVal)
+
         }
       },
       mounted(){
@@ -83,10 +83,18 @@
 </script>
 
 <style scoped>
-
-.show {
-  margin-right: 15px;
-  float: right;
+.zz{
+  margin-top: -8px;
+}
+.top3 .show {
+  width: 50px;
+  height: 40px;
+  color: #ffffff;
+  text-align: center  ;
+ background: url("../../static/img/shouye/beijingse.png") no-repeat left top/100% 100%;
+  border: 0px solid;
+  position: absolute;
+  top: -35px;
 }
 .input1 {
   display: none;
@@ -97,7 +105,7 @@
     position: absolute;
     left: 0;
     top: 50px;
-    z-index: 99999999;
+    z-index: 999;
   }
   .top4{
     width: 1020px;
@@ -119,15 +127,16 @@
     color: #696969;
   }
   .top3{
-    overflow: hidden;
     position: absolute;
     right: 0;
     top: 50px;
   }
   .top3 div{
     line-height: 40px;
+
     border:2px solid #e5e5e5;
-    margin-left: 5px;
+    margin-left: 20px;
+    position: relative;
     float: left;
     width: 127px;
     height: 40px;
@@ -182,6 +191,14 @@
     position: relative;
   }
 .box {
+  width: 100%;
   border-bottom: solid #e8e8e8 1px;
+  background-color: #fff;
+  position: fixed;
+  top: 46px;
+  z-index: 999;
+}
+.box a{
+  text-decoration: none;
 }
 </style>

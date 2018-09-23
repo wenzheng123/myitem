@@ -15,6 +15,8 @@ let countDown = (time) => {
   t[0]=Math.floor((e-d)/(24*60*60));
   if (Math.floor((e-d)/(60*60)%24)<10) {
     t[1]='0'+ Math.floor((e-d)/(60*60)%24);
+  }else {
+    t[1]= Math.floor((e-d)/(60*60)%24);
   }
   if (Math.floor((e-d)/60%(60))<10){
     t[2]='0'+Math.floor((e-d)/60%(60));
@@ -29,9 +31,6 @@ let countDown = (time) => {
 
   return t;
 }
-// let findC = ()=>{
-//   $('#PageNavId').click(()=>{
-//     $('#PageNavId .active').click
-//   })
-// }
+
+
 export {countDown}
