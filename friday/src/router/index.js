@@ -21,7 +21,7 @@ import New1 from '@/components/New1'
 import New2 from '@/components/New2'
 import Yan from '@/components/Yan'
 import Yan1 from '@/components/Yan1'
-import Yan2 from '@/components/Yan2'
+// import Yan2 from '@/components/Yan2'
 import High from '@/components/High'
 import High1 from '@/components/High1'
 import Intro1 from '@/components/Intro1'
@@ -133,11 +133,11 @@ export default new Router({
       name:"Yan1",
       component:Yan1
     },
-    {
-      path:"/yan2",
-      name:"Yan2",
-      component:Yan2
-    },
+    // {
+    //   path:"/yan2",
+    //   name:"Yan2",
+    //   component:Yan2
+    // },
     {
       path:"/tou2",
       name:"Tou2",

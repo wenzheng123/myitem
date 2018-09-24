@@ -75,11 +75,12 @@
         }
       if(this.me3 == "" && this.me4 == "") {
         alert("密码不能为空")
-      }else if (this.me5 == ""){
+      }else if (this.me5 != localStorage.yan2){
         alert("验证码错误")
       }else if(this.me2 == ""){
           alert("手机验证码错误")
-      }else if(this.me4 == this.me3){
+      }else
+        if(this.me4 == this.me3){
         axios.get('/api/PHP/two.php', {
           params: {
             type: 3,

@@ -28,7 +28,7 @@
             <input type="text" v-model="me2" placeholder="手机验证码">
             <p @click="huoQu" >获取验证码</p>
             <input type="checkbox" style="width: 14px;height: 14px"  ><strong>自动登录</strong>
-            <p  @click="chong"> <u> 忘记密码?</u></p>
+
             </div>
         </div>
         <div class="one2">
@@ -52,10 +52,9 @@
               <span class="demo2"></span>
               <p class="me1"><span class="demo3"></span> 手机号码不正确，请重新输入</p>
 
-              <input type="text" placeholder="验证码">
               <div class="two4_1">
                 <div class="two4">
-                  <Yan></Yan>
+
                 </div>
               </div>
               <input class="input5" type="password" placeholder="请输入密码（6-20位号码字符）" v-model="me3"> <input class="input5" type="password" placeholder="请再次输入密码" v-model="me4">
@@ -84,7 +83,6 @@
 <script>
   import axios from 'axios'
   import End from "@/components/End"
-  import  Yan from "@/components/Yan"
   import  Yan1 from "@/components/Yan1"
   import  Tou1 from "@/components/Tou1"
   import  New1 from "@/components/New1"
@@ -94,7 +92,6 @@
         name: "New",
       components:{
           Tou1,
-        Yan,
         Yan1,
         New1,
         New2,
@@ -118,6 +115,10 @@
 
           if(this.me2 == ""){
               alert("手机验证错误")
+          }else if(this.me6 != localStorage.yan1){
+            console.log(this.me6,localStorage.yan1)
+            alert("验证码错误")
+            this.me6 = ""
           }else
           // 正则手机号判断
           if(this.me && /^1[3|4|5|8]\d{9}$/.test(this.me)){

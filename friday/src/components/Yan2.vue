@@ -1,7 +1,8 @@
 <template>
   <div class="aa">
-    <canvas id="bb" width="80" height="34"></canvas>
-    <a id="dd" href="#">看不清楚,换</a>
+    <canvas id="dd" width="100" height="34"></canvas>
+    <a id="da" href="#">看不清楚</a>
+
   </div>
 </template>
 
@@ -9,6 +10,7 @@
   export default {
     name: "Yan2",
     mounted(){
+
 
       /**生成一个随机数**/
       function randomNum(min,max){
@@ -22,31 +24,34 @@
         return "rgb("+r+","+g+","+b+")";
       }
       drawPic();
-      document.getElementById("dd").onclick = function(e){
+      document.getElementById("da").onclick = function(e){
         e.preventDefault();
         drawPic();
       }
 
       /**绘制验证码图片**/
       function drawPic(){
-        var canvas=document.getElementById("bb");
+        var canvas=document.getElementById("dd");
         var width=canvas.width;
         var height=canvas.height;
         var ctx = canvas.getContext('2d');
         ctx.textBaseline = 'bottom';
 
         /**绘制背景色**/
-        ctx.fillStyle = randomColor(180,240); //颜色若太深可能导致看不清
+        ctx.fillStyle = randomColor(200,240); //颜色若太深可能导致看不清
         ctx.fillRect(0,0,width,height);
         /**绘制文字**/
-        var str = 'ABCEFGHJKLMNPQRSTWXY123456789';
+        var sec = ""
+        var str = '0123456789';
         for(var i=0; i<4; i++){
           var txt = str[randomNum(0,str.length)];
-          ctx.fillStyle = randomColor(50,160);  //随机生成字体颜色
-          ctx.font = randomNum(15,40)+'px SimHei'; //随机生成字体大小
+          sec  += txt
+
+          ctx.fillStyle = randomColor(50,100);  //随机生成字体颜色
+          ctx.font = randomNum(16,25)+'px SimHei'; //随机生成字体大小
           var x = 10+i*25;
-          var y = randomNum(25,45);
-          var deg = randomNum(-45, 45);
+          var y = randomNum(30,40);
+          var deg = randomNum(-20, 20);
           //修改坐标原点和旋转角度
           ctx.translate(x,y);
           ctx.rotate(deg*Math.PI/180);
@@ -55,6 +60,7 @@
           ctx.rotate(-deg*Math.PI/180);
           ctx.translate(-x,-y);
         }
+        localStorage.yan2 = sec
         /**绘制干扰线**/
         for(var i=0; i<8; i++){
           ctx.strokeStyle = randomColor(40,180);
@@ -77,5 +83,7 @@
 </script>
 
 <style scoped>
-
+  #ad{
+    margin-left: -10px;
+  }
 </style>

@@ -11,7 +11,7 @@
       <input type="text" placeholder="验证码" v-model="me4">
       <div class="two4_1">
         <div class="two4">
-          <Yan1></Yan1>
+          <Yan></Yan>
         </div>
       </div>
       <div class="two">
@@ -42,13 +42,13 @@
 <script>
 
 import axios from 'axios'
-  import Yan1 from "@/components/Yan1"
+  import Yan from "@/components/Yan"
   import index from "../router";
 
     export default {
         name: "New1",
       components:{
-          Yan1,
+          Yan,
 
       },
       data(){
@@ -62,13 +62,13 @@ import axios from 'axios'
         }
       },
 
-      mounted(){
-
-
-      },
       methods:{
 
         enter(){
+          if (this.me4 != localStorage.yan){
+              alert("验证码错误")
+            this.me4 = ""
+          }else
           // 正则手机号判断
           if(this.me && /^[1][3,4,5,7,8][0-9]{9}$/.test(this.me)){
             // 数据库的调用
@@ -82,6 +82,9 @@ import axios from 'axios'
                 alert("账户未注册,请前往注册")
               }if(aa.data[0].password == this.me3){
                 alert("登录成功")
+                this.$router.push({
+                  path:"/shopping"
+                })
               }else{
                 alert("密码错误")
               }
