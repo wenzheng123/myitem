@@ -12,12 +12,14 @@ import VueAxios from 'vue-axios'
 import * as filters from './assets/filters/filters'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import Vuex from 'vuex'
+
+
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key]);
 })
 Vue.config.productionTip = false
-Vue.use(VueAxios,axios,ElementUI);
-
+Vue.use(VueAxios,axios,ElementUI,Vuex);
 
 new Vue({
   el: '#app',

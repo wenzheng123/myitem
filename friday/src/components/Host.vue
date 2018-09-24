@@ -65,7 +65,7 @@
   margin: 40px 0 0 30px;
 }
   .host div span{
-    font-size: 14px;
+    font-size: 12px;
     line-height: 30px;
     margin-left: 30px;
   }
@@ -76,7 +76,7 @@
 }
   .host div .show{
     position: absolute;
-    width: 140px;
+    width: 110px;
     top: 0;
     bottom: 0;
     right: 10px;

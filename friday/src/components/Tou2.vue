@@ -161,7 +161,7 @@
   input{
     font-size: 17px;
     width: 435px;
-    height: 36px;
+    height: 35px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -173,7 +173,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 10px;
+    right: 18px;
     margin: auto;
   }
   .top2_1{

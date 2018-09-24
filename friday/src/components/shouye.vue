@@ -167,7 +167,7 @@
           $('.conNav1:first').css( 'margin-left',0)
           $('.jl:odd').css('background-position','0 -50px')
           $('.con3:last').css('margin-bottom','40px')
-          this.time = countDown('2018-9-22 0:0:0');
+          this.time = countDown('2018-10-7 0:0:0');
       }
     }
 
